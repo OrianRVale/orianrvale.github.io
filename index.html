@@ -1,1 +1,93 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Bloodline Watchers</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="google-site-verification" content="googlec68964003bb03513" />
+  <meta name="author" content="Orion R. Vale" />
+  <meta name="description" content="The Bloodline Watchers by Orion R. Vale – A mythic dark fantasy novel weaving celestial glyphs, elemental awakenings, and ancient prophecy." />
+  <meta name="keywords" content="Orion R. Vale, The Bloodline Watchers, dark fantasy author, prophecy fiction, glyph awakening, ARG novel, elemental magic book, chosen one fantasy, new fantasy author 2025" />
+  <meta name="robots" content="index, follow" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "The Bloodline Watchers",
+    "author": {
+      "@type": "Person",
+      "name": "Orion R. Vale"
+    },
+    "description": "A mythic dark fantasy novel of celestial glyphs and ancient prophecy. The chosen one has returned.",
+    "genre": "Dark Fantasy, Occult Fiction",
+    "inLanguage": "English",
+    "url": "https://orianrvale.github.io",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://orianrvale.github.io"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <h1 class="main-title angelic-glow">The Bloodline Watchers</h1>
+    <div class="rune-field">
+      <div class="rune-message" id="runeText"></div>
+    </div>
+    <footer class="footer">
+      © Orion R. Vale. Chapter One reveal preview coming in August 2025.
+    </footer>
+  </div>
+  <script>
+    const phrases = [
+      "Only the marked can hear.",
+      "This was never a story.",
+      "The veil is not what you think.",
+      "They promised silence. They lied.",
+      "The watchers wait in light and shadow."
+    ];
+    const runeMap = {
+      A: "ᚨ", B: "ᛒ", C: "ᚲ", D: "ᛞ", E: "ᛖ", F: "ᚠ", G: "ᚷ",
+      H: "ᚺ", I: "ᛁ", J: "ᛃ", K: "ᚲ", L: "ᛚ", M: "ᛗ", N: "ᚾ",
+      O: "ᛟ", P: "ᛈ", Q: "ᛩ", R: "ᚱ", S: "ᛋ", T: "ᛏ", U: "ᚢ",
+      V: "ᚡ", W: "ᚹ", X: "ᛪ", Y: "ᛇ", Z: "ᛉ", ".": ".", " ": " "
+    };
+    const runeTextEl = document.getElementById("runeText");
+    let phraseIndex = 0;
+    function getRune(char) {
+      return runeMap[char.toUpperCase()] || char;
+    }
+    function revealNextPhrase() {
+      const phrase = phrases[phraseIndex];
+      runeTextEl.innerHTML = "";
+      for (let i = 0; i < phrase.length; i++) {
+        const span = document.createElement("span");
+        const finalChar = phrase[i];
+        const runeChar = getRune(finalChar);
+        span.textContent = runeChar;
+        span.dataset.final = finalChar;
+        runeTextEl.appendChild(span);
+        if (finalChar !== " ") {
+          setTimeout(() => rotateToFinal(span), 1800 + Math.random() * 3000);
+        } else {
+          span.style.opacity = 1;
+        }
+      }
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+    function rotateToFinal(span) {
+      span.classList.add("flip");
+      setTimeout(() => {
+        span.textContent = span.dataset.final;
+        span.classList.remove("flip");
+        span.style.opacity = 1;
+      }, 600);
+    }
+    revealNextPhrase();
+    setInterval(revealNextPhrase, 13000);
+  </script>
+</body>
+</html>
