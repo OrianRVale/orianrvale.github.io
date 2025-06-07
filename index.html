@@ -147,8 +147,8 @@
     setTimeout(nextCycle, 3000);
 
     function updateCountdown() {
+      const targetDate = new Date(localStorage.getItem("nextUpdate"));
       const now = new Date();
-      const targetDate = new Date(now.getTime() + 10 * 24 * 60 * 60 * 1000);
       const diff = targetDate - now;
       if (diff <= 0) {
         document.getElementById("countdown").textContent = "The next update has arrived.";
@@ -161,6 +161,13 @@
 
       document.getElementById("countdown").textContent =
         `Next update in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Set next update date 10 days from first visit if not already set
+    if (!localStorage.getItem("nextUpdate")) {
+      const nextUpdate = new Date();
+      nextUpdate.setDate(nextUpdate.getDate() + 10);
+      localStorage.setItem("nextUpdate", nextUpdate);
     }
 
     setInterval(updateCountdown, 1000);
