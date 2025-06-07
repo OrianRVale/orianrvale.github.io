@@ -11,26 +11,48 @@ const englishPhrases = [
 ];
 
 const runeContainer = document.getElementById("runeContainer");
-
 let phraseIndex = 0;
-let letterIndex = 0;
 let isRune = true;
 
-function animatePhrase() {
-  const current = isRune ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
-  runeContainer.textContent = current.slice(0, letterIndex);
-
-  if (letterIndex < current.length) {
-    letterIndex++;
-    setTimeout(animatePhrase, 80);
-  } else {
-    setTimeout(() => {
-      isRune = !isRune;
-      letterIndex = 0;
-      if (!isRune) phraseIndex = (phraseIndex + 1) % runePhrases.length;
-      animatePhrase();
-    }, 2500);
-  }
+function getRandomGlyph() {
+  const glyphs = "ᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿ";
+  return glyphs[Math.floor(Math.random() * glyphs.length)];
 }
 
-animatePhrase();
+function animateFlip(fromText, toText, callback) {
+  const length = Math.max(fromText.length, toText.length);
+  const frameCount = 20;
+  let frame = 0;
+
+  const interval = setInterval(() => {
+    let display = "";
+    for (let i = 0; i < length; i++) {
+      if (frame < frameCount - 1) {
+        display += getRandomGlyph();
+      } else {
+        display += toText[i] || " ";
+      }
+    }
+    runeContainer.textContent = display;
+    frame++;
+    if (frame >= frameCount) {
+      clearInterval(interval);
+      if (callback) callback();
+    }
+  }, 50);
+}
+
+function cyclePhrases() {
+  const current = isRune ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
+  const next = isRune ? englishPhrases[phraseIndex] : runePhrases[(phraseIndex + 1) % runePhrases.length];
+
+  animateFlip(current, next, () => {
+    isRune = !isRune;
+    if (isRune) phraseIndex = (phraseIndex + 1) % runePhrases.length;
+    setTimeout(cyclePhrases, 2500);
+  });
+}
+
+// Start cycle
+runeContainer.textContent = runePhrases[0];
+setTimeout(cyclePhrases, 2500);
