@@ -1,27 +1,18 @@
-const runeMap = {
-  'ᚠ': 'T',
-  'ᚢ': 'H',
-  'ᚦ': 'E',
-  'ᚨ': ' ',
-  'ᚱ': 'C',
-  'ᚲ': 'H',
-  'ᛊ': 'O',
-  'ᛏ': 'S',
-  'ᛒ': 'E',
-  'ᛚ': 'N',
-  'ᚺ': ' '
-};
+const runesElement = document.getElementById('runes');
+const runePhrases = [
+  'ᚦᛁᛋ ᛁᛋ ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᛝ',
+  'ᛏᚺᛖ ᛋᚺᚨᛞᛟᚹᛋ ᚹᛁᛚᛚ ᚠᚨᛚᛚ',
+  'ᛏᚺᛖ ᚲᚺᛟᛋᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ',
+  'ᛟᚾᛚᛁ ᚾᛖᛋᛏᛖᛞ ᚲᚺᛁᛚᛞᚱᛖᚾ ᛋᛖᛖ',
+  'ᚠᚨᛏᛖ ᚹᛁᛚᛚ ᚷᚢᛁᛞᛖ ᛏᚺᛖᛗ ᚺᛟᛗᛖ',
+  'ᚹᛖ ᚱᛖᛗᛖᛗᛒᛖᚱ ᚹᚺᛟ ᚹᛖ ᚨᚱᛖ'
+];
 
-function decodeRunes(runes) {
-  return runes.split('').map(char => runeMap[char] || char).join('');
+let index = 0;
+
+function rotateRunes() {
+  runesElement.textContent = runePhrases[index];
+  index = (index + 1) % runePhrases.length;
 }
 
-const runeElement = document.getElementById('runePhrase');
-let showingRunes = true;
-
-setInterval(() => {
-  runeElement.textContent = showingRunes
-    ? decodeRunes(runeElement.textContent)
-    : 'ᚠᚢᚦᚨᚱᚲ ᛊᛏᚨᚦᚱ ᛒᛚᚨᚺ';
-  showingRunes = !showingRunes;
-}, 4000);
+setInterval(rotateRunes, 3000);
