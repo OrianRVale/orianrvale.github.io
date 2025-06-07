@@ -1,1 +1,69 @@
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  color: white;
+  overflow-x: hidden;
+}
 
+.container {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.main-title {
+  font-size: 3em;
+  margin-bottom: 40px;
+}
+
+.angelic-glow {
+  color: #fff;
+  text-shadow: 0 0 10px gold, 0 0 20px white;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px gold, 0 0 20px white;
+  }
+  50% {
+    text-shadow: 0 0 20px gold, 0 0 35px white;
+  }
+}
+
+.rune-message span {
+  display: inline-block;
+  font-size: 1.5em;
+  opacity: 0.4;
+  transition: all 0.6s ease;
+  padding: 0 2px;
+}
+
+.rune-message span.flip {
+  transform: rotateY(180deg);
+  opacity: 1;
+}
+
+.footer {
+  margin-top: 100px;
+  color: #999;
+  font-size: 0.9em;
+}
+
+/* Background animation placeholder for triangle reveal (coming next) */
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0; left: 0;
+  z-index: -1;
+  background: black;
+  background-size: cover;
+  animation: flickerBg 60s ease-in-out infinite;
+}
+
+@keyframes flickerBg {
+  0%, 100% { opacity: 0.98; }
+  50% { opacity: 0.95; }
+}
