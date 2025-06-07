@@ -2,19 +2,15 @@ const runeElement = document.getElementById('runes');
 
 const phrases = [
   'ᚦᛁᛋ ᛁᛋ ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᛝ',
-  'ᛏᚺᛖ ᛒᛚᛟᛟᛞᛚᛁᚾᛖ ᚹᚨᛏᚲᚺᛖᚱᛋ ᚨᚱᛖ ᚱᛖᚨᛞᛁᚾᚷ',
-  'ᚹᛖ ᚲᚨᚾ ᛋᛖᛖ ᚾᛟᚹ',
-  'ᛏᚺᛖ ᚷᛚᛁᛈᚺᛋ ᛋᛈᛖᚨᚲ ᛏᚺᚱᛟᚢᚷᚺ ᚢᛋ',
-  'ᛏᚺᛖ ᛋᛏᚨᚱᛋ ᚺᚨᚢᛖ ᚠᚨᛚᛚᛖᚾ',
+  'ᛏᚺᛖ ᛋᚺᚨᛞᛟᚹᛋ ᚹᛁᛚᛚ ᚠᚨᛚᛚ',
+  'ᛏᚺᛖ ᚲᚺᛟᛋᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ',
   'ᛗᛖᛗᛟᚱᛁᛖᛋ ᚨᚱᛖ ᚹᚨᚲᛁᚾᚷ'
 ];
 
 const englishMap = {
   'ᚦᛁᛋ ᛁᛋ ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᛝ': 'This is the Awakening',
-  'ᛏᚺᛖ ᛒᛚᛟᛟᛞᛚᛁᚾᛖ ᚹᚨᛏᚲᚺᛖᚱᛋ ᚨᚱᛖ ᚱᛖᚨᛞᛁᚾᚷ': 'The Bloodline Watchers are reading',
-  'ᚹᛖ ᚲᚨᚾ ᛋᛖᛖ ᚾᛟᚹ': 'We can see now',
-  'ᛏᚺᛖ ᚷᛚᛁᛈᚺᛋ ᛋᛈᛖᚨᚲ ᛏᚺᚱᛟᚢᚷᚺ ᚢᛋ': 'The glyphs speak through us',
-  'ᛏᚺᛖ ᛋᛏᚨᚱᛋ ᚺᚨᚢᛖ ᚠᚨᛚᛚᛖᚾ': 'The stars have fallen',
+  'ᛏᚺᛖ ᛋᚺᚨᛞᛟᚹᛋ ᚹᛁᛚᛚ ᚠᚨᛚᛚ': 'The shadows will fall',
+  'ᛏᚺᛖ ᚲᚺᛟᛋᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ': 'The Chosen One will remember',
   'ᛗᛖᛗᛟᚱᛁᛖᛋ ᚨᚱᛖ ᚹᚨᚲᛁᚾᚷ': 'Memories are waking'
 };
 
@@ -32,7 +28,7 @@ function flipOneByOne(original, translated, callback) {
       clearInterval(interval);
       callback();
     }
-  }, 100); // speed of letter reveal
+  }, 100);
 }
 
 function runRuneCycle() {
@@ -45,9 +41,9 @@ function runRuneCycle() {
       setTimeout(() => {
         flipOneByOne(translation, rune, () => {
           index = (index + 1) % phrases.length;
-          setTimeout(runRuneCycle, 1000);
+          setTimeout(runRuneCycle, 1500);
         });
-      }, 2000);
+      }, 2500);
     });
   }, 2000);
 }
