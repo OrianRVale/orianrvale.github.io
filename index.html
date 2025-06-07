@@ -40,12 +40,12 @@
       overflow-x: hidden;
     }
     .title {
-      font-size: 4em;
+      font-size: 6vw;
       text-shadow: 0 0 20px white, 0 0 40px #00ffff;
       margin-top: 2rem;
     }
     .rune-text {
-      font-size: 2em;
+      font-size: 4vw;
       margin: 2rem auto;
       animation: flicker 1s infinite alternate;
       letter-spacing: 0.1em;
@@ -147,9 +147,8 @@
     setTimeout(nextCycle, 3000);
 
     function updateCountdown() {
-      const targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 9);
       const now = new Date();
+      const targetDate = new Date(now.getTime() + 10 * 24 * 60 * 60 * 1000);
       const diff = targetDate - now;
       if (diff <= 0) {
         document.getElementById("countdown").textContent = "The next update has arrived.";
