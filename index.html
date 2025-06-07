@@ -25,12 +25,12 @@
   <meta name="twitter:description" content="Enter the glyphs. Follow the static. A novel unlike any other is about to awaken." />
   <meta name="twitter:image" content="https://orianrvale.github.io/assets/preview.png" />
 
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css" />
-
   <!-- GoatCounter Analytics -->
   <script data-goatcounter="https://orionwatchers.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -62,16 +62,17 @@
 
   <script src="script.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const openBtn = document.getElementById("openModal");
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalTrigger = document.getElementById("openModal");
       const modal = document.getElementById("prophecyModal");
 
-      if (openBtn && modal) {
-        openBtn.addEventListener("click", () => {
+      if (modalTrigger && modal) {
+        modalTrigger.addEventListener("click", function (e) {
+          e.preventDefault();
           modal.style.display = "block";
         });
 
-        modal.addEventListener("click", () => {
+        modal.addEventListener("click", function () {
           modal.style.display = "none";
         });
       }
