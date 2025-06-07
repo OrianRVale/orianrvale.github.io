@@ -1,62 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Orion R. Vale">
+  <meta name="description" content="The Bloodline Watchers is a mythic dark fantasy saga of prophecy, glyphs, and cosmic war. Enter the glyphs and awaken.">
+  <meta name="robots" content="index, follow">
+  <title>The Bloodline Watchers</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+</head>
 <body>
-  <div class="background"></div>
-
-  <!-- Triangle Overlay -->
-  <div class="triangle-overlay"></div>
-
-  <div class="container">
-    <h1 class="main-title angelic-glow">The Bloodline Watchers</h1>
-
-    <div id="runeContainer" class="rune-message"></div>
-
-    <div class="footer">
-      &copy; 2025 Orion R. Vale · Chapter 1 Preview arriving August 13, 2025
-    </div>
+  <div class="main-container">
+    <h1 class="glow-title">The Bloodline Watchers</h1>
+    <div id="runeReveal" class="rune-text">ᛏᚺᛖ ᚨᚹᚨᚱᛖᚾᛁᛝ ᛋᚺᚺᛁᚠᛏ</div>
   </div>
 
-  <script>
-    const runeContainer = document.getElementById("runeContainer");
-    const phrases = [
-      "Do you feel it?",
-      "The Awakening?",
-      "Are you ready?",
-      "The veil is thin...",
-      "The Chosen will Remember"
-    ];
+  <div class="link-box">
+    <a href="/thebloodlinewatchers/" class="archive-link">🜃 Archive of Prophecies</a>
+  </div>
 
-    const runes = "ᚠᚢᚦᚨᚱᚲᚷᚺᚾᛁᛃᛇᛈᛉᛋᛏᛒᛖᛗᛚᛜᛞᛟᛞ";
+  <footer>
+    <p>© 2025 Orion R. Vale · Chapter One Preview Coming August 13, 2025</p>
+  </footer>
 
-    function getRandomRune() {
-      return runes[Math.floor(Math.random() * runes.length)];
-    }
-
-    function showPhrase(phrase) {
-      runeContainer.innerHTML = "";
-
-      for (let char of phrase) {
-        const span = document.createElement("span");
-        span.textContent = getRandomRune();
-        runeContainer.appendChild(span);
-
-        let counter = 0;
-        const interval = setInterval(() => {
-          if (counter < 10) {
-            span.textContent = getRandomRune();
-            counter++;
-          } else {
-            span.textContent = char;
-            span.classList.add("flip");
-            clearInterval(interval);
-          }
-        }, 120 + Math.random() * 80);
-      }
-    }
-
-    let i = 0;
-    showPhrase(phrases[i]);
-    setInterval(() => {
-      i = (i + 1) % phrases.length;
-      showPhrase(phrases[i]);
-    }, 8000);
-  </script>
+  <script src="runes.js"></script>
 </body>
+</html>
