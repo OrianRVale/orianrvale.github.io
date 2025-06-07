@@ -1,51 +1,36 @@
-const runeElement = document.getElementById('runes');
-
-const phrases = [
-  'ᚦᛁᛋ ᛁᛋ ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᛝ',
-  'ᛏᚺᛖ ᛋᚺᚨᛞᛟᚹᛋ ᚹᛁᛚᛚ ᚠᚨᛚᛚ',
-  'ᛏᚺᛖ ᚲᚺᛟᛋᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ',
-  'ᛗᛖᛗᛟᚱᛁᛖᛋ ᚨᚱᛖ ᚹᚨᚲᛁᚾᚷ'
+const runePhrases = [
+  "ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ",
+  "ᚨᚾᛞ ᛊᛟ ᛞᛟ ᚹᛖ",
+  "ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᚾᚷ ᛁᛋ ᚾᛖᚨᚱ"
 ];
 
-const englishMap = {
-  'ᚦᛁᛋ ᛁᛋ ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᛝ': 'This is the Awakening',
-  'ᛏᚺᛖ ᛋᚺᚨᛞᛟᚹᛋ ᚹᛁᛚᛚ ᚠᚨᛚᛚ': 'The shadows will fall',
-  'ᛏᚺᛖ ᚲᚺᛟᛋᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ': 'The Chosen One will remember',
-  'ᛗᛖᛗᛟᚱᛁᛖᛋ ᚨᚱᛖ ᚹᚨᚲᛁᚾᚷ': 'Memories are waking'
-};
+const englishPhrases = [
+  "The Chosen One Will Remember",
+  "And So Do We",
+  "The Awakening Is Near"
+];
 
-let index = 0;
+const runeContainer = document.getElementById("runeContainer");
 
-function flipOneByOne(original, translated, callback) {
-  let i = 0;
-  const chars = original.split('');
-  const interval = setInterval(() => {
-    if (i < translated.length) {
-      chars[i] = translated[i];
-      runeElement.textContent = chars.join('');
-      i++;
-    } else {
-      clearInterval(interval);
-      callback();
-    }
-  }, 100);
+let phraseIndex = 0;
+let letterIndex = 0;
+let isRune = true;
+
+function animatePhrase() {
+  const current = isRune ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
+  runeContainer.textContent = current.slice(0, letterIndex);
+
+  if (letterIndex < current.length) {
+    letterIndex++;
+    setTimeout(animatePhrase, 80);
+  } else {
+    setTimeout(() => {
+      isRune = !isRune;
+      letterIndex = 0;
+      if (!isRune) phraseIndex = (phraseIndex + 1) % runePhrases.length;
+      animatePhrase();
+    }, 2500);
+  }
 }
 
-function runRuneCycle() {
-  const rune = phrases[index];
-  const translation = englishMap[rune];
-  runeElement.textContent = rune;
-
-  setTimeout(() => {
-    flipOneByOne(rune, translation, () => {
-      setTimeout(() => {
-        flipOneByOne(translation, rune, () => {
-          index = (index + 1) % phrases.length;
-          setTimeout(runRuneCycle, 1500);
-        });
-      }, 2500);
-    });
-  }, 2000);
-}
-
-runRuneCycle();
+animatePhrase();
