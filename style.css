@@ -1,24 +1,50 @@
-.triangle-overlay {
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  width: 240px;
-  height: 240px;
-  transform: translate(-50%, -50%) rotate(0deg);
-  background: radial-gradient(rgba(255,215,0,0.02), rgba(255,215,0,0));
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  animation: trianglePulse 14s infinite ease-in-out;
-  pointer-events: none;
-  z-index: -2;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #f0f0f0;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-@keyframes trianglePulse {
+.container {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+h1.glow {
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 0 12px #fff, 0 0 24px #ffd700;
+  margin-bottom: 1rem;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
   0%, 100% {
-    opacity: 0.015;
-    transform: translate(-50%, -50%) scale(1.01) rotate(0deg);
+    text-shadow: 0 0 12px #fff, 0 0 24px #ffd700;
   }
   50% {
-    opacity: 0.1;
-    transform: translate(-50%, -50%) scale(1.03) rotate(2deg);
+    text-shadow: 0 0 20px #ffffff, 0 0 40px #ffd700;
   }
+}
+
+.rune-phrase {
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  font-family: 'Courier New', monospace;
+  color: #bbb;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #ccc;
 }
