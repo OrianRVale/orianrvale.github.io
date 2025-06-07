@@ -40,21 +40,28 @@
       overflow-x: hidden;
     }
     .title {
-      font-size: 3em;
-      text-shadow: 0 0 10px white, 0 0 20px #00ffff;
+      font-size: 4em;
+      text-shadow: 0 0 20px white, 0 0 40px #00ffff;
       margin-top: 2rem;
     }
     .rune-text {
       font-size: 2em;
       margin: 2rem auto;
       animation: flicker 1s infinite alternate;
+      letter-spacing: 0.1em;
+    }
+    .subtitle {
+      font-size: 1.2em;
+      margin-top: 1rem;
+      opacity: 0.8;
+      text-shadow: 0 0 10px #aaa;
     }
     @keyframes flicker {
       from { opacity: 0.6; }
       to { opacity: 1; }
     }
     .countdown {
-      font-size: 1.75em;
+      font-size: 1.5em;
       margin-top: 3rem;
       color: #00ffff;
       text-shadow: 0 0 5px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
@@ -74,6 +81,7 @@
 <body>
   <h1 class="title">The Bloodline Watchers</h1>
   <div id="runeContainer" class="rune-text">ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ</div>
+  <div class="subtitle">THE CHOSEN ONE WILL REMEMBER</div>
 
   <div id="countdown" class="countdown"></div>
 
@@ -82,22 +90,65 @@
   </footer>
 
   <script>
-    const runes = "ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ";
-    const english = "THE CHOSEN ONE WILL REMEMBER";
-    const runeEl = document.getElementById("runeContainer");
+    const runePhrases = [
+      "ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ",
+      "ᚨᚾᛞ ᛊᛟ ᛞᛟ ᚹᛖ",
+      "ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᚾᚷ ᛁᛋ ᚾᛖᚨᚱ"
+    ];
 
-    let i = 0;
-    const flipInterval = setInterval(() => {
-      if (i < english.length) {
-        runeEl.textContent = english.slice(0, i + 1) + runes.slice(i + 1);
-        i++;
-      } else {
-        clearInterval(flipInterval);
-      }
-    }, 150);
+    const englishPhrases = [
+      "THE CHOSEN ONE WILL REMEMBER",
+      "AND SO DO WE",
+      "THE AWAKENING IS NEAR"
+    ];
+
+    const runeContainer = document.getElementById("runeContainer");
+    let phraseIndex = 0;
+    let showingRunes = true;
+
+    function getRandomRune() {
+      const runes = "ᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿ";
+      return runes[Math.floor(Math.random() * runes.length)];
+    }
+
+    function flipCharacters(from, to, callback) {
+      let frame = 0;
+      const maxFrames = 15;
+      const interval = setInterval(() => {
+        let output = '';
+        for (let i = 0; i < to.length; i++) {
+          if (frame < maxFrames - 1) {
+            output += getRandomRune();
+          } else {
+            output += to[i];
+          }
+        }
+        runeContainer.textContent = output;
+        frame++;
+        if (frame >= maxFrames) {
+          clearInterval(interval);
+          if (callback) callback();
+        }
+      }, 60);
+    }
+
+    function nextCycle() {
+      const from = showingRunes ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
+      const to = showingRunes ? englishPhrases[phraseIndex] : runePhrases[(phraseIndex + 1) % runePhrases.length];
+
+      flipCharacters(from, to, () => {
+        showingRunes = !showingRunes;
+        if (!showingRunes) phraseIndex = (phraseIndex + 1) % runePhrases.length;
+        setTimeout(nextCycle, 4000);
+      });
+    }
+
+    runeContainer.textContent = runePhrases[0];
+    setTimeout(nextCycle, 3000);
 
     function updateCountdown() {
-      const targetDate = new Date("2025-08-01T00:00:00");
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 9);
       const now = new Date();
       const diff = targetDate - now;
       if (diff <= 0) {
