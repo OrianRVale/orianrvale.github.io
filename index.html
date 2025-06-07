@@ -45,16 +45,10 @@
       margin-top: 2rem;
     }
     .rune-text {
-      font-size: 4vw;
+      font-size: 3vw;
       margin: 2rem auto;
       animation: flicker 1s infinite alternate;
       letter-spacing: 0.1em;
-    }
-    .subtitle {
-      font-size: 1.2em;
-      margin-top: 1rem;
-      opacity: 0.8;
-      text-shadow: 0 0 10px #aaa;
     }
     @keyframes flicker {
       from { opacity: 0.6; }
@@ -81,7 +75,6 @@
 <body>
   <h1 class="title">The Bloodline Watchers</h1>
   <div id="runeContainer" class="rune-text">ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ</div>
-  <div class="subtitle">THE CHOSEN ONE WILL REMEMBER</div>
 
   <div id="countdown" class="countdown"></div>
 
@@ -146,6 +139,12 @@
     runeContainer.textContent = runePhrases[0];
     setTimeout(nextCycle, 3000);
 
+    if (!localStorage.getItem("nextUpdate")) {
+      const nextUpdate = new Date();
+      nextUpdate.setDate(nextUpdate.getDate() + 10);
+      localStorage.setItem("nextUpdate", nextUpdate);
+    }
+
     function updateCountdown() {
       const targetDate = new Date(localStorage.getItem("nextUpdate"));
       const now = new Date();
@@ -161,13 +160,6 @@
 
       document.getElementById("countdown").textContent =
         `Next update in ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    // Set next update date 10 days from first visit if not already set
-    if (!localStorage.getItem("nextUpdate")) {
-      const nextUpdate = new Date();
-      nextUpdate.setDate(nextUpdate.getDate() + 10);
-      localStorage.setItem("nextUpdate", nextUpdate);
     }
 
     setInterval(updateCountdown, 1000);
