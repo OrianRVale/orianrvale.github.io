@@ -12,47 +12,44 @@ const englishPhrases = [
 
 const runeContainer = document.getElementById("runeContainer");
 let phraseIndex = 0;
-let isRune = true;
+let showingRunes = true;
 
-function getRandomGlyph() {
-  const glyphs = "ᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿ";
-  return glyphs[Math.floor(Math.random() * glyphs.length)];
+function getRandomRune() {
+  const runes = "ᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿ";
+  return runes[Math.floor(Math.random() * runes.length)];
 }
 
-function animateFlip(fromText, toText, callback) {
-  const length = Math.max(fromText.length, toText.length);
-  const frameCount = 20;
+function flipCharacters(from, to, callback) {
   let frame = 0;
-
+  const maxFrames = 12;
   const interval = setInterval(() => {
-    let display = "";
-    for (let i = 0; i < length; i++) {
-      if (frame < frameCount - 1) {
-        display += getRandomGlyph();
+    let output = '';
+    for (let i = 0; i < to.length; i++) {
+      if (frame < maxFrames - 1) {
+        output += getRandomRune();
       } else {
-        display += toText[i] || " ";
+        output += to[i];
       }
     }
-    runeContainer.textContent = display;
+    runeContainer.textContent = output;
     frame++;
-    if (frame >= frameCount) {
+    if (frame >= maxFrames) {
       clearInterval(interval);
-      if (callback) callback();
+      callback();
     }
-  }, 50);
+  }, 60);
 }
 
-function cyclePhrases() {
-  const current = isRune ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
-  const next = isRune ? englishPhrases[phraseIndex] : runePhrases[(phraseIndex + 1) % runePhrases.length];
+function nextCycle() {
+  const from = showingRunes ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
+  const to = showingRunes ? englishPhrases[phraseIndex] : runePhrases[(phraseIndex + 1) % runePhrases.length];
 
-  animateFlip(current, next, () => {
-    isRune = !isRune;
-    if (isRune) phraseIndex = (phraseIndex + 1) % runePhrases.length;
-    setTimeout(cyclePhrases, 2500);
+  flipCharacters(from, to, () => {
+    showingRunes = !showingRunes;
+    if (!showingRunes) phraseIndex = (phraseIndex + 1) % runePhrases.length;
+    setTimeout(nextCycle, 3000);
   });
 }
 
-// Start cycle
 runeContainer.textContent = runePhrases[0];
-setTimeout(cyclePhrases, 2500);
+setTimeout(nextCycle, 3000);
