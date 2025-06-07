@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Bloodline Watchers | Orion R. Vale</title>
 
   <!-- SEO Meta -->
@@ -31,52 +31,90 @@
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .title {
+      font-size: 3em;
+      text-shadow: 0 0 10px white, 0 0 20px #00ffff;
+      margin-top: 2rem;
+    }
+    .rune-text {
+      font-size: 2em;
+      margin: 2rem auto;
+      animation: flicker 1s infinite alternate;
+    }
+    @keyframes flicker {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+    .countdown {
+      font-size: 1.5em;
+      margin-top: 3rem;
+      color: #00ffff;
+      text-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
+      animation: spark 0.2s infinite;
+    }
+    @keyframes spark {
+      0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
+      50% { text-shadow: 0 0 20px #00faff, 0 0 30px #00faff; }
+    }
+    .footer {
+      margin-top: 4rem;
+      font-size: 1em;
+      opacity: 0.8;
+    }
+  </style>
 </head>
-
 <body>
-  <div class="overlay"></div>
+  <h1 class="title">The Bloodline Watchers</h1>
+  <div id="runeContainer" class="rune-text">ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ</div>
 
-  <main class="main-container" role="main" aria-label="Site content">
-    <header>
-      <h1 class="title">The Bloodline Watchers</h1>
-    </header>
+  <div id="countdown" class="countdown"></div>
 
-    <section aria-label="Animated glyph prophecy">
-      <div id="runeContainer" class="rune-text">ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ</div>
-      <div class="cta-text">Enter the glyphs. Follow the static. <span id="openModal" class="cta-underline">Are you one of us?</span></div>
-    </section>
+  <footer class="footer">
+    <p>A novel by Orion R. Vale — August 2025</p>
+  </footer>
 
-    <footer class="footer">
-      <p>A novel by Orion R. Vale — August 2025</p>
-    </footer>
-  </main>
-
-  <!-- Modal -->
-  <div id="prophecyModal" class="modal">
-    <div class="modal-content">
-      <p>The glyphs remember you.</p>
-      <p>This is only the beginning...</p>
-      <p style="font-size: 0.85rem; opacity: 0.5;">(More coming soon)</p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const modalTrigger = document.getElementById("openModal");
-      const modal = document.getElementById("prophecyModal");
+    const runes = "ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ";
+    const english = "THE CHOSEN ONE WILL REMEMBER";
+    const runeEl = document.getElementById("runeContainer");
 
-      if (modalTrigger && modal) {
-        modalTrigger.addEventListener("click", function (e) {
-          e.preventDefault();
-          modal.style.display = "block";
-        });
-
-        modal.addEventListener("click", function () {
-          modal.style.display = "none";
-        });
+    let i = 0;
+    const flipInterval = setInterval(() => {
+      if (i < english.length) {
+        runeEl.textContent = english.slice(0, i + 1) + runes.slice(i + 1);
+        i++;
+      } else {
+        clearInterval(flipInterval);
       }
-    });
+    }, 150);
+
+    function updateCountdown() {
+      const targetDate = new Date("2025-08-01T00:00:00");
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "The next update has arrived.";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").textContent =
+        `Next update in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
