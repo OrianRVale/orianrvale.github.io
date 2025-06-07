@@ -1,18 +1,74 @@
-const runesElement = document.getElementById('runes');
-const runePhrases = [
-  'ᚦᛁᛋ ᛁᛋ ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᛝ', // This is the Awakening
-  'ᛏᚺᛖ ᛋᚺᚨᛞᛟᚹᛋ ᚹᛁᛚᛚ ᚠᚨᛚᛚ',
-  'ᛏᚺᛖ ᚲᚺᛟᛋᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ',
-  'ᛟᚾᛚᛁ ᚾᛖᛋᛏᛖᛞ ᚲᚺᛁᛚᛞᚱᛖᚾ ᛋᛖᛖ',
-  'ᚠᚨᛏᛖ ᚹᛁᛚᛚ ᚷᚢᛁᛞᛖ ᛏᚺᛖᛗ ᚺᛟᛗᛖ',
-  'ᚹᛖ ᚱᛖᛗᛖᛗᛒᛖᚱ ᚹᚺᛟ ᚹᛖ ᚨᚱᛖ'
-];
-
-let index = 0;
-
-function rotateRunes() {
-  runesElement.textContent = runePhrases[index];
-  index = (index + 1) % runePhrases.length;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #f0f0f0;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-setInterval(rotateRunes, 3000);
+.container {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+h1.glow {
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 0 12px #fff, 0 0 24px #ffd700;
+  margin-bottom: 1rem;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 12px #fff, 0 0 24px #ffd700;
+  }
+  50% {
+    text-shadow: 0 0 20px #ffffff, 0 0 40px #ffd700;
+  }
+}
+
+.rune-phrase {
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  font-family: 'Courier New', monospace;
+  color: #bbb;
+  margin-top: 1rem;
+}
+
+canvas {
+  margin-top: 30px;
+  width: 120px;
+  height: 100px;
+  pointer-events: none;
+  opacity: 0.12;
+  animation: flicker 2s infinite ease-in-out;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.03); }
+}
+
+footer {
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #ccc;
+  position: fixed;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+}
