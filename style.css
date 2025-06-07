@@ -10,6 +10,7 @@ body {
 .container {
   text-align: center;
   padding: 100px 20px;
+  position: relative;
 }
 
 .main-title {
@@ -51,13 +52,14 @@ body {
   font-size: 0.9em;
 }
 
-/* Background animation placeholder for triangle reveal (coming next) */
+/* Background and triangle visuals */
 .background {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  top: 0; left: 0;
-  z-index: -1;
+  top: 0;
+  left: 0;
+  z-index: -3;
   background: black;
   background-size: cover;
   animation: flickerBg 60s ease-in-out infinite;
@@ -66,4 +68,29 @@ body {
 @keyframes flickerBg {
   0%, 100% { opacity: 0.98; }
   50% { opacity: 0.95; }
+}
+
+.triangle-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: conic-gradient(from 180deg at 50% 50%, rgba(255, 215, 0, 0.1), transparent 30%, rgba(255, 215, 0, 0.2));
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: trianglePulse 14s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes trianglePulse {
+  0%, 100% {
+    opacity: 0.02;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(1.03) rotate(3deg);
+  }
 }
