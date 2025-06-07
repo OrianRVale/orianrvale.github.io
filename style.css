@@ -42,7 +42,9 @@ body {
   text-shadow: 0 0 5px #7cf;
   letter-spacing: 0.12em;
   min-height: 2em;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  white-space: pre;
+  font-variant-ligatures: none;
 }
 
 .cta-text {
