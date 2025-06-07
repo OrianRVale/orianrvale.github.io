@@ -80,3 +80,29 @@ body {
   margin-top: 3rem;
   text-shadow: 0 0 5px #555;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  color: white;
+  font-family: 'UnifrakturCook', serif;
+  text-align: center;
+  padding-top: 20%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.modal-content {
+  font-size: 1.25rem;
+  text-shadow: 0 0 5px #7cf;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
