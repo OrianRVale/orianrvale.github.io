@@ -1,4 +1,4 @@
-/* styles.css — Bloodline Watchers (Restored Full Version) */
+/* styles.css — Bloodline Watchers (Final Cinematic Version) */
 
 body {
   background-color: #000;
@@ -16,15 +16,15 @@ body {
 
 .main-title {
   font-size: 3.5rem;
-  color: #fff;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  color: #eee;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   letter-spacing: 2px;
   animation: glowTitle 4s ease-in-out infinite alternate;
 }
 
 @keyframes glowTitle {
   0%   { text-shadow: 0 0 10px #fff, 0 0 20px #aaa; }
-  100% { text-shadow: 0 0 20px #fff, 0 0 30px #777; }
+  100% { text-shadow: 0 0 20px #fff, 0 0 30px #888; }
 }
 
 .runes-container {
