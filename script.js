@@ -1,47 +1,34 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const runes = document.querySelectorAll(".rune");
+// Flip runes periodically
+const runes = document.querySelectorAll('.rune');
+setInterval(() => {
+  runes.forEach((rune, index) => {
+    setTimeout(() => {
+      rune.classList.add('flip');
+      setTimeout(() => rune.classList.remove('flip'), 1500);
+    }, index * 200);
+  });
+}, 5000);
 
-  function flipRunes() {
-    runes.forEach((rune, index) => {
-      setTimeout(() => {
-        const original = rune.textContent;
-        const english = rune.getAttribute("data-english");
+// Countdown to release date
+const countdownElement = document.getElementById('countdown');
+const releaseDate = new Date('August 13, 2025 20:13:00 CDT').getTime();
 
-        rune.textContent = english;
-        rune.classList.add("flipped");
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = releaseDate - now;
 
-        setTimeout(() => {
-          rune.textContent = original;
-          rune.classList.remove("flipped");
-        }, 2000);
-      }, index * 300);
-    });
+  if (distance < 0) {
+    countdownElement.innerText = 'The awakening has begun...';
+    return;
   }
 
-  flipRunes();
-  setInterval(flipRunes, 15000);
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
-  // Countdown to August 13, 2025 8:13 PM
-  const countdown = document.getElementById("countdown");
-  const targetDate = new Date("August 13, 2025 20:13:00").getTime();
+  countdownElement.innerText = `Next Update In: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-      countdown.innerHTML = "The veil has opened.";
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdown.innerHTML = `Next Update In: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-});
+setInterval(updateCountdown, 1000);
+updateCountdown();
