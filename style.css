@@ -1,8 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
 .main-title {
     font-size: 3em;
     margin-top: 20vh;
-    color: #ffffff; /* white */
-    text-shadow: 0 0 8px #ccc, 0 0 15px #888; /* subtle white-gray glow */
+    color: #ffffff;
+    text-shadow: 0 0 10px #aaa;
     position: relative;
     display: inline-block;
 }
@@ -10,23 +20,47 @@
 .main-title::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
     border-radius: 50%;
     border: 2px solid transparent;
-    animation: spark-glow 4s infinite linear;
+    box-shadow: 0 0 15px #ffffff;
+    animation: spark 5s infinite linear;
 }
 
-@keyframes spark-glow {
-    0% { box-shadow: 0 0 5px #fff, inset 0 0 10px #fff; }
-    50% { box-shadow: 0 0 15px #fff, inset 0 0 20px #fff; }
-    100% { box-shadow: 0 0 5px #fff, inset 0 0 10px #fff; }
+@keyframes spark {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
 }
 
-.runes-container, .subtext, .countdown {
-    color: #bbb; /* lighter gray */
+.runes-container {
+    margin-top: 40px;
+    color: #bbb;
+    font-size: 1.5em;
     opacity: 0.8;
-    font-size: 1.2em;
+}
+
+.dna-strand-container {
+    position: absolute;
+    bottom: 15vh;
+    width: 100%;
+    height: 100px;
+    background: url('dna-strand.png') no-repeat center;
+    opacity: 0.1;
+    animation: dna-slide 15s linear infinite;
+}
+
+@keyframes dna-slide {
+    from { background-position: 0 center; }
+    to { background-position: -300px center; }
+}
+
+footer {
+    position: absolute;
+    bottom: 3vh;
+    width: 100%;
+    font-size: 0.9em;
+    opacity: 0.6;
 }
