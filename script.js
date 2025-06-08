@@ -29,6 +29,21 @@
   <script data-goatcounter="https://orionwatchers.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 
+  <!-- Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Orion R. Vale",
+    "url": "https://orianrvale.github.io",
+    "sameAs": [
+      "https://www.tiktok.com/@orionawakens"
+    ],
+    "jobTitle": "Author",
+    "description": "Fantasy author of The Bloodline Watchers — a mystic, glyph-driven saga of awakening."
+  }
+  </script>
+
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -45,7 +60,7 @@
       margin-top: 2rem;
     }
     .rune-text {
-      font-size: 2.5vw;
+      font-size: 3vw;
       margin: 2rem auto;
       animation: flicker 1s infinite alternate;
       letter-spacing: 0.1em;
