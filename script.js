@@ -1,41 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const runeElements = document.querySelectorAll(".rune");
+  const runes = document.querySelectorAll(".rune");
 
-  // Define English translation for each rune
-  const englishLetters = ["R", "E", "M", "E", "M", "B", "E", "R"];
-
-  function animateRunes() {
-    runeElements.forEach((rune, index) => {
+  function flipRunes() {
+    runes.forEach((rune, index) => {
       setTimeout(() => {
-        // Save original rune
         const original = rune.textContent;
+        const english = rune.getAttribute("data-english");
 
-        // Flip to English
-        rune.textContent = englishLetters[index % englishLetters.length];
-        rune.classList.add("rune-glow");
+        rune.textContent = english;
+        rune.classList.add("flipped");
 
-        // Revert after short delay to rune
         setTimeout(() => {
           rune.textContent = original;
-          rune.classList.remove("rune-glow");
+          rune.classList.remove("flipped");
         }, 2000);
-      }, index * 500);
+      }, index * 350);
     });
   }
 
-  // Animate on load
-  animateRunes();
-
-  // Animate every 15 seconds
-  setInterval(animateRunes, 15000);
-
-  // Optional: Hover flicker
-  runeElements.forEach(rune => {
-    rune.addEventListener("mouseenter", () => {
-      rune.classList.add("rune-hover");
-    });
-    rune.addEventListener("mouseleave", () => {
-      rune.classList.remove("rune-hover");
-    });
-  });
+  flipRunes();
+  setInterval(flipRunes, 15000);
 });
