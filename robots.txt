@@ -1,0 +1,5 @@
+# robots.txt for orianrvale.github.io
+User-agent: *
+Allow: /
+
+Sitemap: https://orianrvale.github.io/sitemap.xml
