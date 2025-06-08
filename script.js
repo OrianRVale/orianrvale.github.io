@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   flipRunes();
   setInterval(flipRunes, 15000);
 
-  // Countdown logic
+  // Countdown to August 13, 2025 8:13 PM
   const countdown = document.getElementById("countdown");
   const targetDate = new Date("August 13, 2025 20:13:00").getTime();
 
