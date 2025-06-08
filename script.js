@@ -1,184 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Bloodline Watchers | Orion R. Vale</title>
+// Flip each rune to English, staggered one-by-one
+const englishWords = ['The', 'veil', 'is', 'thin', 'Do', 'you', 'feel', 'it?', 'We', 'remember'];
+const runeElements = document.querySelectorAll('.rune');
 
-  <!-- SEO Meta -->
-  <meta name="description" content="A dark fantasy epic of ancient glyphs, celestial bloodlines, and a forgotten prophecy. The chosen one will remember—and so do we.">
-  <meta name="keywords" content="The Bloodline Watchers, Orion R Vale, glyphs, prophecy, ARG, dark fantasy, runes, chosen one, myth, the awakening">
-  <meta name="author" content="Orion R. Vale">
-  <meta name="robots" content="index, follow" />
+runeElements.forEach((rune, index) => {
+  setTimeout(() => {
+    rune.style.transform = 'rotateY(180deg)';
+    setTimeout(() => {
+      rune.textContent = englishWords[index];
+      rune.style.color = '#00ffff';
+    }, 800);
+  }, index * 500);
+});
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="The Bloodline Watchers | Orion R. Vale" />
-  <meta property="og:description" content="Enter the glyphs. Follow the static. A novel unlike any other is about to awaken." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://orianrvale.github.io/" />
-  <meta property="og:image" content="https://orianrvale.github.io/assets/preview.png" />
+// Countdown to 10 days from now
+const countdown = document.getElementById('countdown');
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 10);
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Bloodline Watchers | Orion R. Vale" />
-  <meta name="twitter:description" content="Enter the glyphs. Follow the static. A novel unlike any other is about to awaken." />
-  <meta name="twitter:image" content="https://orianrvale.github.io/assets/preview.png" />
+function updateCountdown() {
+  const now = new Date();
+  const distance = targetDate - now;
 
-  <!-- GoatCounter Analytics -->
-  <script data-goatcounter="https://orionwatchers.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
-
-  <!-- Structured Data for Google -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Orion R. Vale",
-    "url": "https://orianrvale.github.io",
-    "sameAs": [
-      "https://www.tiktok.com/@orionawakens"
-    ],
-    "jobTitle": "Author",
-    "description": "Fantasy author of The Bloodline Watchers — a mystic, glyph-driven saga of awakening."
+  if (distance <= 0) {
+    countdown.innerText = "The next glyph has been revealed.";
+    return;
   }
-  </script>
 
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Cinzel', serif;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    .title {
-      font-size: 6vw;
-      text-shadow: 0 0 20px white, 0 0 40px #00ffff;
-      margin-top: 2rem;
-    }
-    .rune-text {
-      font-size: 3vw;
-      margin: 2rem auto;
-      animation: flicker 1s infinite alternate;
-      letter-spacing: 0.1em;
-    }
-    @keyframes flicker {
-      from { opacity: 0.6; }
-      to { opacity: 1; }
-    }
-    .countdown {
-      font-size: 1.5em;
-      margin-top: 3rem;
-      color: #00ffff;
-      text-shadow: 0 0 5px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
-      animation: sparkMovie 0.15s infinite;
-    }
-    @keyframes sparkMovie {
-      0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 15px #00faff; }
-      50% { text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff; }
-    }
-    .footer {
-      margin-top: 4rem;
-      font-size: 1em;
-      opacity: 0.8;
-    }
-  </style>
-</head>
-<body>
-  <h1 class="title">The Bloodline Watchers</h1>
-  <div id="runeContainer" class="rune-text">ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ</div>
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
-  <div id="countdown" class="countdown"></div>
+  countdown.innerText = `Next Update In: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
 
-  <footer class="footer">
-    <p>A novel by Orion R. Vale — August 2025</p>
-  </footer>
-
-  <script>
-    const runePhrases = [
-      "ᚦᚺᛖ ᚲᚺᛟᛊᛖᚾ ᛟᚾᛖ ᚹᛁᛚᛚ ᚱᛖᛗᛖᛗᛒᛖᚱ",
-      "ᚨᚾᛞ ᛊᛟ ᛞᛟ ᚹᛖ",
-      "ᛏᚺᛖ ᚨᚹᚨᚲᛖᚾᛁᚾᚷ ᛁᛋ ᚾᛖᚨᚱ"
-    ];
-
-    const englishPhrases = [
-      "THE CHOSEN ONE WILL REMEMBER",
-      "AND SO DO WE",
-      "THE AWAKENING IS NEAR"
-    ];
-
-    const runeContainer = document.getElementById("runeContainer");
-    let phraseIndex = 0;
-    let showingRunes = true;
-
-    function getRandomRune() {
-      const runes = "ᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿ";
-      return runes[Math.floor(Math.random() * runes.length)];
-    }
-
-    function flipCharacters(from, to, callback) {
-      let frame = 0;
-      const maxFrames = 15;
-      const interval = setInterval(() => {
-        let output = '';
-        for (let i = 0; i < to.length; i++) {
-          if (frame < maxFrames - 1) {
-            output += getRandomRune();
-          } else {
-            output += to[i];
-          }
-        }
-        runeContainer.textContent = output;
-        frame++;
-        if (frame >= maxFrames) {
-          clearInterval(interval);
-          if (callback) callback();
-        }
-      }, 60);
-    }
-
-    function nextCycle() {
-      const from = showingRunes ? runePhrases[phraseIndex] : englishPhrases[phraseIndex];
-      const to = showingRunes ? englishPhrases[phraseIndex] : runePhrases[(phraseIndex + 1) % runePhrases.length];
-
-      flipCharacters(from, to, () => {
-        showingRunes = !showingRunes;
-        if (!showingRunes) phraseIndex = (phraseIndex + 1) % runePhrases.length;
-        setTimeout(nextCycle, 4000);
-      });
-    }
-
-    runeContainer.textContent = runePhrases[0];
-    setTimeout(nextCycle, 3000);
-
-    if (!localStorage.getItem("nextUpdate")) {
-      const nextUpdate = new Date();
-      nextUpdate.setDate(nextUpdate.getDate() + 10);
-      localStorage.setItem("nextUpdate", nextUpdate);
-    }
-
-    function updateCountdown() {
-      const targetDate = new Date(localStorage.getItem("nextUpdate"));
-      const now = new Date();
-      const diff = targetDate - now;
-      if (diff <= 0) {
-        document.getElementById("countdown").textContent = "The next update has arrived.";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("countdown").textContent =
-        `Next update in ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-</body>
-</html>
+updateCountdown();
+setInterval(updateCountdown, 1000);
