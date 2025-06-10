@@ -1,34 +1,34 @@
-// Flip runes periodically
-const runes = document.querySelectorAll('.rune');
-setInterval(() => {
-  runes.forEach((rune, index) => {
-    setTimeout(() => {
-      rune.classList.add('flip');
-      setTimeout(() => rune.classList.remove('flip'), 1500);
-    }, index * 200);
-  });
-}, 5000);
+const runes = ['ᛏ', 'ᚺ', 'ᛖ', 'ᚹ', 'ᚨ', 'ᛃ'];
+const phrases = [
+  'The Awakening',
+  'Do you feel it?',
+  'The Chosen One Will Remember'
+];
 
-// Countdown to release date
-const countdownElement = document.getElementById('countdown');
-const releaseDate = new Date('August 13, 2025 20:13:00 CDT').getTime();
+const runeElements = document.querySelectorAll('.rune');
+let showingEnglish = false;
+let phraseIndex = 0;
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = releaseDate - now;
-
-  if (distance < 0) {
-    countdownElement.innerText = 'The awakening has begun...';
-    return;
+function rotateRunes() {
+  if (!showingEnglish) {
+    // Show English phrase
+    const phrase = phrases[phraseIndex].toUpperCase();
+    for (let i = 0; i < runeElements.length; i++) {
+      runeElements[i].textContent = phrase[i] || '';
+    }
+    showingEnglish = true;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+  } else {
+    // Return to runes
+    for (let i = 0; i < runeElements.length; i++) {
+      runeElements[i].textContent = runes[i % runes.length];
+    }
+    showingEnglish = false;
   }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  countdownElement.innerText = `Next Update In: ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
+// Start rotating every 6 seconds
+setInterval(rotateRunes, 6000);
+
+// Optional: run once on page load
+rotateRunes();
