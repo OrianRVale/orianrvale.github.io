@@ -3,58 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>The Bloodline Watchers</title>
 
-  <!-- SEO -->
-  <meta name="description" content="The Bloodline Watchers — A cinematic fantasy novel by Orion R. Vale. Awaken your truth. Prepare for August 2025." />
-  <meta name="keywords" content="The Bloodline Watchers, Orion R Vale, fantasy novel, spiritual fiction, elemental powers, awakening" />
+  <!-- SEO META -->
+  <meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale." />
+  <meta name="keywords" content="The Bloodline Watchers, Orion R. Vale, awakening novel, mythic fantasy, ancient scrolls, celestial lore, prophecy, chosen one" />
   <meta name="author" content="Orion R. Vale" />
 
-  <!-- Open Graph -->
+  <!-- OPEN GRAPH META -->
   <meta property="og:title" content="The Bloodline Watchers" />
-  <meta property="og:description" content="A novel by Orion R. Vale — August 2025" />
-  <meta property="og:image" content="https://orianrvale.github.io/assets/og.jpg" />
-  <meta property="og:url" content="https://orianrvale.github.io/" />
+  <meta property="og:description" content="A mythic story of awakening and ancient bloodlines. A novel by Orion R. Vale." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://orianrvale.github.io" />
+  <meta property="og:image" content="https://orianrvale.github.io/assets/preview.jpg" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- TWITTER META -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Bloodline Watchers" />
+  <meta name="twitter:description" content="A mythic story of awakening and ancient bloodlines. A novel by Orion R. Vale." />
+  <meta name="twitter:image" content="https://orianrvale.github.io/assets/preview.jpg" />
 
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6WCJZPRTJ6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-6WCJZPRTJ6');
-  </script>
+  <!-- FAVICON (optional update) -->
+  <link rel="icon" href="favicon.ico" />
 
-  <!-- GoatCounter -->
-  <script data-goatcounter="https://orionrvale.goatcounter.com/count"
-          async src="https://gc.zgo.at/count.js"></script>
+  <style>
+    body {
+      background-color: black;
+      font-family: serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .title {
+      font-size: 3em;
+      text-shadow: 0 0 15px white;
+      margin-top: 100px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1.5em;
+      margin-top: 20px;
+      height: 1.5em;
+      text-align: center;
+      color: white;
+    }
+
+    .update-msg,
+    .author-tagline {
+      color: #ccc;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .mystic-footer {
+      font-style: italic;
+      color: #999;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="hero">
-    <h1 class="main-title">The Bloodline Watchers</h1>
-    <div class="runes-container">
-      <span class="rune">ᛏ</span>
-      <span class="rune">ᚺ</span>
-      <span class="rune">ᛖ</span>
-      <span class="rune">ᚹ</span>
-      <span class="rune">ᚨ</span>
-      <span class="rune">ᛃ</span>
-    </div>
-    <div class="countdown" id="countdown">Next Update In: ...</div>
-    <p class="tagline">A novel by Orion R. Vale — August 2025</p>
-  </div>
+  <!-- TITLE -->
+  <h1 class="title">The Bloodline Watchers</h1>
 
+  <!-- SUBTITLE PHRASE ROTATOR -->
+  <div id="phrase-rotator" class="subtitle"></div>
+
+  <!-- STATIC MESSAGE -->
+  <p class="update-msg">Chapter One arrives August 2025</p>
+  <p class="author-tagline"><em>A novel by Orion R. Vale — August 2025</em></p>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; 2025 Orion R. Vale. All rights reserved.
+    <p>© 2025 Orion R. Vale. All rights reserved.</p>
+    <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- PHRASE ROTATOR SCRIPT -->
+  <script>
+    const phrases = [
+      "Do you feel it?",
+      "Are you ready?",
+      "The Awakening?"
+    ];
+    let phraseIndex = 0;
+    const rotator = document.getElementById('phrase-rotator');
+
+    function rotatePhrase() {
+      rotator.textContent = phrases[phraseIndex];
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+
+    rotatePhrase();
+    setInterval(rotatePhrase, 5000); // every 5 seconds
+  </script>
 </body>
 </html>
