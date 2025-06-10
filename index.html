@@ -26,6 +26,9 @@
   <!-- FAVICON -->
   <link rel="icon" href="favicon.ico" />
 
+  <!-- RUNE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
+
   <style>
     body {
       background-color: black;
@@ -97,11 +100,12 @@
 
     .rune {
       position: absolute;
-      font-size: 1.2em;
-      color: rgba(255, 255, 255, 0.08);
+      font-size: 1.5em;
+      color: rgba(255, 255, 255, 0.06);
       animation: drift 60s linear infinite;
-      font-family: serif;
+      font-family: 'Noto Sans Runic', serif;
       transition: color 1s, transform 1s;
+      white-space: nowrap;
     }
 
     @keyframes drift {
@@ -110,8 +114,8 @@
     }
 
     .rune.flipped {
-      color: rgba(255, 255, 255, 0.2);
-      transform: scale(1.5) rotateY(180deg);
+      color: rgba(255, 255, 255, 0.25);
+      transform: scale(1.4) rotateY(180deg);
     }
   </style>
 </head>
@@ -152,13 +156,13 @@
     }
 
     rotatePhrase();
-    setInterval(rotatePhrase, 5000); // every 5 seconds
+    setInterval(rotatePhrase, 5000);
   </script>
 
   <!-- BACKGROUND RUNE SCRIPT -->
   <script>
     const runeLayer = document.getElementById("rune-layer");
-    const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᛉ','ᛃ','ᛏ','ᛇ','ᛒ'];
+    const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᛉ','ᛃ','ᛏ','ᛇ','ᛒ'];
     const bgPhrases = ["Do you feel it?", "Are you ready?", "The Awakening?"];
 
     function createRune() {
@@ -168,22 +172,22 @@
 
       span.style.left = Math.random() * 100 + "vw";
       span.style.top = Math.random() * -100 + "vh";
-      span.style.fontSize = (Math.random() * 2 + 1) + "em";
+      span.style.fontSize = (Math.random() * 2 + 0.8) + "em";
       runeLayer.appendChild(span);
 
-      // Flip randomly
+      // Flip to English occasionally
       setTimeout(() => {
         if (Math.random() < 0.1) {
           span.textContent = bgPhrases[Math.floor(Math.random() * bgPhrases.length)];
           span.classList.add("flipped");
         }
-      }, Math.random() * 10000 + 3000);
+      }, Math.random() * 10000 + 4000);
 
-      // Clean up after 70s
+      // Remove after 70s
       setTimeout(() => runeLayer.removeChild(span), 70000);
     }
 
-    setInterval(createRune, 1500);
+    setInterval(createRune, 1200);
   </script>
 </body>
 </html>
