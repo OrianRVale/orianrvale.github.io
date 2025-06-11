@@ -18,7 +18,7 @@
   <div class="hero">
     <h1 class="main-title">The Bloodline Watchers</h1>
     <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
-    
+
     <!-- Phrase Rotator -->
     <div class="countdown" id="phrase-rotator">Enter the glyphs.</div>
 
@@ -44,20 +44,18 @@
     rotatePhrase();
     setInterval(rotatePhrase, 4000);
 
-    const runes = ['ᚠ','ᚢ','ᚱ','ᛁ','ᛒ','ᛚ','ᛧ','ᛇ','ᛟ','ᚫ'];
-    const english = ['B','L','O','O','D','L','I','N','E'];
+    const runes = ['ᚫ','ᛟ','ᛇ','ᛧ','ᛚ','ᛒ','ᛁ','ᚱ','ᚢ'];
     const runeContainer = document.getElementById("runes");
 
-    english.forEach((char, i) => {
+    runes.forEach((r, i) => {
       const span = document.createElement("span");
       span.classList.add("rune");
-      span.textContent = runes[i % runes.length];
+      span.textContent = r;
       runeContainer.appendChild(span);
 
-      setTimeout(() => {
-        span.classList.add("flip");
-        span.textContent = char;
-      }, 3000 + i * 300);
+      setInterval(() => {
+        span.classList.toggle("flip");
+      }, 3000 + Math.random() * 2000);
     });
   </script>
 </body>
