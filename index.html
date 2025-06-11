@@ -5,150 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Bloodline Watchers</title>
 
-  <!-- SEO META -->
+  <!-- META TAGS -->
   <meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale." />
-  <meta name="keywords" content="The Bloodline Watchers, Orion R. Vale, awakening novel, mythic fantasy, ancient scrolls, celestial lore, prophecy, chosen one" />
+  <meta name="keywords" content="Bloodline Watchers, Orion R Vale, awakening novel, glyphs, prophecy, chosen bloodline" />
   <meta name="author" content="Orion R. Vale" />
-
-  <!-- OPEN GRAPH META -->
-  <meta property="og:title" content="The Bloodline Watchers" />
-  <meta property="og:description" content="A mythic story of awakening and ancient bloodlines. A novel by Orion R. Vale." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://orianrvale.github.io" />
-  <meta property="og:image" content="https://orianrvale.github.io/assets/preview.jpg" />
-
-  <!-- TWITTER META -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Bloodline Watchers" />
-  <meta name="twitter:description" content="A mythic story of awakening and ancient bloodlines. A novel by Orion R. Vale." />
-  <meta name="twitter:image" content="https://orianrvale.github.io/assets/preview.jpg" />
-
-  <!-- FAVICON -->
-  <link rel="icon" href="favicon.ico" />
-
-  <!-- RUNE FONT -->
+  <meta property="og:image" content="/assets/preview.jpg" />
+  <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      background-color: black;
-      font-family: serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      color: white;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    .title {
-      font-size: 3em;
-      text-shadow: 0 0 15px white;
-      margin-top: 100px;
-      text-align: center;
-      z-index: 1;
-    }
-
-    .subtitle {
-      font-size: 1.5em;
-      margin-top: 20px;
-      height: 1.5em;
-      text-align: center;
-      color: white;
-      z-index: 1;
-    }
-
-    .update-msg,
-    .author-tagline {
-      color: #ccc;
-      text-align: center;
-      margin-top: 20px;
-      z-index: 1;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      color: #666;
-      font-size: 0.9em;
-      z-index: 1;
-    }
-
-    .mystic-footer {
-      font-style: italic;
-      color: #999;
-      margin-top: 5px;
-    }
-
-    /* BACKGROUND RUNE FLICKER */
-    .rune-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .rune {
-      position: absolute;
-      font-size: 1.5em;
-      color: rgba(255, 255, 255, 0.06);
-      animation: drift 60s linear infinite;
-      font-family: 'Noto Sans Runic', serif;
-      transition: color 1s, transform 1s;
-      white-space: nowrap;
-    }
-
-    @keyframes drift {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(100vh); }
-    }
-
-    .rune.flipped {
-      color: rgba(255, 255, 255, 0.25);
-      transform: scale(1.4) rotateY(180deg);
-    }
-  </style>
 </head>
 
 <body>
-  <!-- BACKGROUND GLYPHS -->
-  <div class="rune-layer" id="rune-layer"></div>
+  <div class="hero">
+    <h1 class="main-title">The Bloodline Watchers</h1>
+    <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
+    
+    <!-- Phrase Rotator -->
+    <div class="countdown" id="phrase-rotator">Enter the glyphs.</div>
 
-  <!-- TITLE -->
-  <h1 class="title">The Bloodline Watchers</h1>
+    <!-- Runes Row -->
+    <div class="runes-container" id="runes"></div>
+  </div>
 
-  <!-- SUBTITLE PHRASE ROTATOR -->
-  <div id="phrase-rotator" class="subtitle"></div>
-
-  <!-- STATIC MESSAGE -->
-  <p class="update-msg">Chapter One arrives August 2025</p>
-  <p class="author-tagline"><em>A novel by Orion R. Vale — August 2025</em></p>
-
-  <!-- FOOTER -->
   <footer>
     <p>© 2025 Orion R. Vale. All rights reserved.</p>
     <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
   </footer>
 
-  <!-- PHRASE ROTATOR SCRIPT -->
   <script>
-    const phrases = [
-      "Do you feel it?",
-      "Are you ready?",
-      "The Awakening?"
-    ];
+    const phrases = ["Enter the glyphs.", "Follow the static.", "Awaken the signal."];
     let phraseIndex = 0;
-    const rotator = document.getElementById('phrase-rotator');
+    const rotator = document.getElementById("phrase-rotator");
 
     function rotatePhrase() {
       rotator.textContent = phrases[phraseIndex];
@@ -156,38 +42,23 @@
     }
 
     rotatePhrase();
-    setInterval(rotatePhrase, 5000);
-  </script>
+    setInterval(rotatePhrase, 4000);
 
-  <!-- BACKGROUND RUNE SCRIPT -->
-  <script>
-    const runeLayer = document.getElementById("rune-layer");
-    const runes = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᛉ','ᛃ','ᛏ','ᛇ','ᛒ'];
-    const bgPhrases = ["Do you feel it?", "Are you ready?", "The Awakening?"];
+    const runes = ['ᚠ','ᚢ','ᚱ','ᛁ','ᛒ','ᛚ','ᛧ','ᛇ','ᛟ','ᚫ'];
+    const english = ['B','L','O','O','D','L','I','N','E'];
+    const runeContainer = document.getElementById("runes");
 
-    function createRune() {
+    english.forEach((char, i) => {
       const span = document.createElement("span");
       span.classList.add("rune");
-      span.textContent = runes[Math.floor(Math.random() * runes.length)];
+      span.textContent = runes[i % runes.length];
+      runeContainer.appendChild(span);
 
-      span.style.left = Math.random() * 100 + "vw";
-      span.style.top = Math.random() * -100 + "vh";
-      span.style.fontSize = (Math.random() * 2 + 0.8) + "em";
-      runeLayer.appendChild(span);
-
-      // Flip to English occasionally
       setTimeout(() => {
-        if (Math.random() < 0.1) {
-          span.textContent = bgPhrases[Math.floor(Math.random() * bgPhrases.length)];
-          span.classList.add("flipped");
-        }
-      }, Math.random() * 10000 + 4000);
-
-      // Remove after 70s
-      setTimeout(() => runeLayer.removeChild(span), 70000);
-    }
-
-    setInterval(createRune, 1200);
+        span.classList.add("flip");
+        span.textContent = char;
+      }, 3000 + i * 300);
+    });
   </script>
 </body>
 </html>
