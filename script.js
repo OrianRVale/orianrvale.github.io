@@ -1,8 +1,15 @@
+// ===============
+// RUNE + PHRASE LOGIC
+// ===============
+
 const runes = ['ᛏ', 'ᚺ', 'ᛖ', 'ᚹ', 'ᚨ', 'ᛃ'];
 const phrases = [
   'The Awakening',
-  'Do you feel it?',
-  'The Chosen One Will Remember'
+  'Do You Feel It?',
+  'The Chosen One Will Remember',
+  'The Veil Is Thinning',
+  'Sunday Is Coming',
+  'The 144,000 Return'
 ];
 
 const runeElements = document.querySelectorAll('.rune');
@@ -10,25 +17,45 @@ let showingEnglish = false;
 let phraseIndex = 0;
 
 function rotateRunes() {
-  if (!showingEnglish) {
-    // Show English phrase
-    const phrase = phrases[phraseIndex].toUpperCase();
-    for (let i = 0; i < runeElements.length; i++) {
-      runeElements[i].textContent = phrase[i] || '';
+  // Add fade-out
+  runeElements.forEach(el => el.classList.add('hidden'));
+
+  setTimeout(() => {
+    if (!showingEnglish) {
+      const phrase = phrases[phraseIndex].toUpperCase();
+      for (let i = 0; i < runeElements.length; i++) {
+        runeElements[i].textContent = phrase[i] || '';
+      }
+      showingEnglish = true;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    } else {
+      for (let i = 0; i < runeElements.length; i++) {
+        runeElements[i].textContent = runes[i % runes.length];
+      }
+      showingEnglish = false;
     }
-    showingEnglish = true;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-  } else {
-    // Return to runes
-    for (let i = 0; i < runeElements.length; i++) {
-      runeElements[i].textContent = runes[i % runes.length];
-    }
-    showingEnglish = false;
-  }
+
+    // Optional: play subtle whisper (add audio element in HTML)
+    // const whisper = document.getElementById('whisper');
+    // if (whisper) whisper.play();
+
+    // Add fade-in
+    runeElements.forEach(el => el.classList.remove('hidden'));
+  }, 300); // match with CSS fade timing
 }
 
-// Start rotating every 6 seconds
+// Run once at start
+rotateRunes();
+// Rotate every 6 seconds
 setInterval(rotateRunes, 6000);
 
-// Optional: run once on page load
-rotateRunes();
+// ===============
+// RUNE FLIP ANIMATION (continues independently)
+// ===============
+
+runes.forEach((r, i) => {
+  setInterval(() => {
+    const el = runeElements[i % runeElements.length];
+    if (el) el.classList.toggle('flip');
+  }, 3000 + Math.random() * 2000);
+});
