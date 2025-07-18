@@ -9,6 +9,7 @@ body {
   color: #f5f5f5;
   font-family: 'Noto Sans Runic', sans-serif;
   overflow-x: hidden;
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,7 +32,7 @@ a {
    =============== */
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: radial-gradient(circle at center, #0f0f11 0%, #000000 100%);
   display: flex;
@@ -39,36 +40,36 @@ a {
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  text-align: center;
   position: relative;
 }
 
-/* Glowing Title */
+/* 🔱 Glowing Main Title */
 .main-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: #fff;
   letter-spacing: 2px;
   margin-bottom: 1rem;
-  color: #fff;
   text-shadow:
-    0 0 8px #ffd700,
-    0 0 12px #ffd700,
-    0 0 18px #ffda55,
-    0 0 24px #fff2a8;
-  animation: glowPulse 2.5s infinite alternate;
+    0 0 10px #ffd700,
+    0 0 20px #ffd700,
+    0 0 30px #fff7b2,
+    0 0 50px #ffe066;
+  animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
 @keyframes glowPulse {
   0% {
     text-shadow:
-      0 0 4px #ffe066,
-      0 0 8px #ffd700,
-      0 0 12px #ffd700;
+      0 0 5px #ffdb58,
+      0 0 10px #ffd700,
+      0 0 20px #ffe066;
   }
   100% {
     text-shadow:
-      0 0 10px #fff7b2,
-      0 0 20px #ffd700,
-      0 0 30px #ffec8b;
+      0 0 20px #fff7b2,
+      0 0 40px #ffd700,
+      0 0 60px #ffe066;
   }
 }
 
@@ -98,10 +99,11 @@ a {
 
 .rune {
   font-family: 'Noto Sans Runic', monospace;
-  font-size: 2rem;
-  margin: 0.3rem;
-  color: #aaa;
+  font-size: 2.4rem;
+  margin: 0.4rem;
+  color: #ccc;
   transition: opacity 0.4s ease-in-out, transform 0.6s ease;
+  letter-spacing: 0.1rem;
 }
 
 .rune.hidden {
@@ -147,7 +149,13 @@ a {
 
 #lock-timer {
   animation: rotateTimer 5s infinite;
-  letter-spacing: 1px;
+  color: #f5f5f5;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #d6c573;
 }
 
 @keyframes rotateTimer {
@@ -189,7 +197,7 @@ footer .mystic-footer {
 
 @media (max-width: 768px) {
   .main-title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
 
   .tagline {
@@ -201,7 +209,7 @@ footer .mystic-footer {
   }
 
   .rune {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .lock-icon {
