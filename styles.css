@@ -1,5 +1,5 @@
 /* ===============
-   BASE + GLOBAL
+   BASE
    =============== */
 
 body {
@@ -27,7 +27,7 @@ a {
 }
 
 /* ===============
-   HERO SECTION
+   HERO
    =============== */
 
 .hero {
@@ -97,25 +97,49 @@ a {
 }
 
 /* ===============
-   BUTTON
+   LOCK TIMER
    =============== */
 
-.preorder-btn {
-  margin-top: 2rem;
-  padding: 0.75rem 2.5rem;
-  background: #111;
-  color: #fff;
-  border: 1px solid #444;
-  font-size: 1rem;
-  text-transform: uppercase;
+.lock-container {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ddd;
   font-family: 'Noto Sans Runic', sans-serif;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
 }
 
-.preorder-btn:hover {
-  background: #222;
-  box-shadow: 0 0 10px #999;
+.lock-icon {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+#lock-timer {
+  animation: rotateTimer 5s infinite;
+  letter-spacing: 1px;
+}
+
+.lock-caption {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #aaa;
+}
+
+@keyframes rotateTimer {
+  0%   { opacity: 0; transform: scale(0.9); }
+  25%  { opacity: 1; transform: scale(1.05); }
+  50%  { opacity: 1; transform: scale(1); }
+  75%  { opacity: 0.6; transform: scale(0.95); }
+  100% { opacity: 0; transform: scale(0.9); }
 }
 
 /* ===============
@@ -157,8 +181,13 @@ footer .mystic-footer {
     font-size: 1.5rem;
   }
 
-  .preorder-btn {
-    width: 90%;
-    font-size: 0.9rem;
+  .lock-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 1rem;
+  }
+
+  .lock-caption {
+    font-size: 0.85rem;
   }
 }
