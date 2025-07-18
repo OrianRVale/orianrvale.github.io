@@ -1,7 +1,3 @@
-// ===============
-// RUNE + PHRASE LOGIC
-// ===============
-
 const runes = ['ᛏ', 'ᚺ', 'ᛖ', 'ᚹ', 'ᚨ', 'ᛃ'];
 const phrases = [
   'The Awakening',
@@ -17,7 +13,6 @@ let showingEnglish = false;
 let phraseIndex = 0;
 
 function rotateRunes() {
-  // Add fade-out
   runeElements.forEach(el => el.classList.add('hidden'));
 
   setTimeout(() => {
@@ -34,25 +29,14 @@ function rotateRunes() {
       }
       showingEnglish = false;
     }
-
-    // Optional: play subtle whisper (add audio element in HTML)
-    // const whisper = document.getElementById('whisper');
-    // if (whisper) whisper.play();
-
-    // Add fade-in
     runeElements.forEach(el => el.classList.remove('hidden'));
-  }, 300); // match with CSS fade timing
+  }, 300);
 }
 
-// Run once at start
 rotateRunes();
-// Rotate every 6 seconds
 setInterval(rotateRunes, 6000);
 
-// ===============
-// RUNE FLIP ANIMATION (continues independently)
-// ===============
-
+// Rune flip animation
 runes.forEach((r, i) => {
   setInterval(() => {
     const el = runeElements[i % runeElements.length];
