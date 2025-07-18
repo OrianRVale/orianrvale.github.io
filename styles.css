@@ -1,92 +1,164 @@
-/* styles.css — Bloodline Watchers Cinematic Site */
+/* ===============
+   BASE + GLOBAL
+   =============== */
 
 body {
-  background-color: #000;
   margin: 0;
   padding: 0;
-  font-family: 'Georgia', serif;
-  color: #ccc;
-  text-align: center;
+  background: radial-gradient(ellipse at top, #0a0a0c 0%, #000000 100%);
+  color: #f5f5f5;
+  font-family: 'Noto Sans Runic', sans-serif;
   overflow-x: hidden;
 }
 
-/* Layout */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: #444;
+  color: #fff;
+}
+
+/* ===============
+   HERO SECTION
+   =============== */
+
 .hero {
-  padding: 100px 20px 40px;
-}
-
-/* Glowing Main Title */
-.main-title {
-  font-size: 3.5rem;
-  color: #eee;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  letter-spacing: 2px;
-  animation: glowTitle 4s ease-in-out infinite alternate;
-}
-
-@keyframes glowTitle {
-  0%   { text-shadow: 0 0 10px #fff, 0 0 20px #aaa; }
-  100% { text-shadow: 0 0 20px #fff, 0 0 30px #888; }
-}
-
-/* Runes Row */
-.runes-container {
-  margin: 30px auto;
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #0f0f11 0%, #000000 100%);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 16px;
+  padding: 3rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.main-title {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: #bbb;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.countdown {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+/* ===============
+   RUNES
+   =============== */
+
+.runes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
 .rune {
-  font-size: 2.5rem;
-  color: #ccc;
-  transition: color 0.5s ease, transform 0.5s ease;
-  cursor: default;
-  font-family: 'Courier New', Courier, monospace;
-  user-select: none;
+  font-family: 'Noto Sans Runic', monospace;
+  font-size: 2rem;
+  margin: 0.3rem;
+  color: #aaa;
+  transition: opacity 0.4s ease-in-out, transform 0.6s ease;
+}
+
+.rune.hidden {
+  opacity: 0;
 }
 
 .rune.flip {
   transform: rotateY(180deg);
-  color: #eee;
+  color: #fff;
 }
 
-/* Countdown Timer */
-.countdown {
-  font-size: 1.3rem;
-  margin-top: 20px;
-  color: #aaa;
-  text-shadow: 0 0 5px #444;
+.rune:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #fff, 0 0 20px #9cf;
+  cursor: pointer;
 }
 
-/* Footer */
+/* ===============
+   BUTTON
+   =============== */
+
+.preorder-btn {
+  margin-top: 2rem;
+  padding: 0.75rem 2.5rem;
+  background: #111;
+  color: #fff;
+  border: 1px solid #444;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: 'Noto Sans Runic', sans-serif;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.preorder-btn:hover {
+  background: #222;
+  box-shadow: 0 0 10px #999;
+}
+
+/* ===============
+   FOOTER
+   =============== */
+
 footer {
-  margin-top: 80px;
-  font-size: 0.9rem;
-  color: #555;
-  padding-bottom: 40px;
-  text-shadow: 0 0 3px #222;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #111;
+  color: #777;
+  font-size: 0.875rem;
 }
 
-/* Tagline below countdown */
-.tagline {
-  font-size: 1.1rem;
-  margin-top: 20px;
-  color: #999;
+footer .mystic-footer {
+  margin-top: 0.5rem;
   font-style: italic;
-  letter-spacing: 0.03em;
-  text-shadow: 0 0 3px #444;
+  color: #999;
 }
 
-/* Mobile Friendly */
-@media screen and (max-width: 600px) {
+/* ===============
+   RESPONSIVE
+   =============== */
+
+@media (max-width: 768px) {
   .main-title {
     font-size: 2.2rem;
   }
-  .rune {
-    font-size: 2rem;
+
+  .tagline {
+    font-size: 1rem;
   }
-  .hero {
-    padding-top: 60px;
+
+  .countdown {
+    font-size: 1.2rem;
+  }
+
+  .rune {
+    font-size: 1.5rem;
+  }
+
+  .preorder-btn {
+    width: 90%;
+    font-size: 0.9rem;
   }
 }
