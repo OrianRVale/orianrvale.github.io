@@ -1,57 +1,52 @@
 // ===============
-// RUNES + PHRASES
+// STATIC PHRASE ROTATOR (above runes)
 // ===============
 
-const runes = ['ᛏ', 'ᚺ', 'ᛖ', 'ᚹ', 'ᚨ', 'ᛃ'];
-const phrases = [
-  'The Awakening',
+const phraseRotator = document.getElementById('phrase-rotator');
+const staticPhrases = [
+  'Enter the glyphs.',
+  'The Awakening.',
   'Do You Feel It?',
-  'The Chosen One Will Remember',
-  'The Veil Is Thinning',
-  'Sunday Is Coming',
-  'The 144,000 Return'
+  'The Chosen One Will Remember.',
+  'They Are Watching.',
+  'The Signal Is Real.'
 ];
+let staticIndex = 0;
+
+function rotateStaticPhrase() {
+  phraseRotator.textContent = staticPhrases[staticIndex];
+  staticIndex = (staticIndex + 1) % staticPhrases.length;
+}
+rotateStaticPhrase();
+setInterval(rotateStaticPhrase, 5000);
+
+// ===============
+// RUNE FLIP EFFECT (runes never spell anything)
+// ===============
 
 const runeElements = document.querySelectorAll('.rune');
-let showingEnglish = false;
-let phraseIndex = 0;
+const runeSet = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᛉ','ᛃ','ᛇ','ᛗ','ᛞ','ᛟ','ᛋ'];
 
-function rotateRunes() {
-  // Fade out
-  runeElements.forEach(el => el.classList.add('hidden'));
-
-  setTimeout(() => {
-    if (!showingEnglish) {
-      const phrase = phrases[phraseIndex].toUpperCase();
-      for (let i = 0; i < runeElements.length; i++) {
-        runeElements[i].textContent = phrase[i] || '';
-      }
-      showingEnglish = true;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-    } else {
-      for (let i = 0; i < runeElements.length; i++) {
-        runeElements[i].textContent = runes[i % runes.length];
-      }
-      showingEnglish = false;
-    }
-
-    // Fade in
-    runeElements.forEach(el => el.classList.remove('hidden'));
-  }, 300);
+function shuffleRunes() {
+  runeElements.forEach((el, i) => {
+    el.classList.add('hidden');
+    setTimeout(() => {
+      const newRune = runeSet[Math.floor(Math.random() * runeSet.length)];
+      el.textContent = newRune;
+      el.classList.remove('hidden');
+    }, 250);
+  });
 }
 
-// Run once at load
-rotateRunes();
-// Rotate every 6 seconds
-setInterval(rotateRunes, 6000);
+shuffleRunes();
+setInterval(shuffleRunes, 4000);
 
 // ===============
-// GLYPH FLIP FX
+// RUNE FLIP FX (3D flip random toggle)
 // ===============
 
-runes.forEach((r, i) => {
+runeElements.forEach((el, i) => {
   setInterval(() => {
-    const el = runeElements[i % runeElements.length];
-    if (el) el.classList.toggle('flip');
+    el.classList.toggle('flip');
   }, 3000 + Math.random() * 1500);
 });
