@@ -1,184 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Bloodline Watchers</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Bloodline Watchers</title>
 
-<!-- SEO -->
-<meta name="description" content="A cosmic thriller rooted in ancient truth. Enter the glyphs. The Bloodline Watchers by Orion R Vale. Published by CosmicQuill.pub." />
-<meta name="keywords" content="The Bloodline Watchers, Orion R Vale, Cosmic Quill, mythic thriller, runes, glyphs, prophecy" />
-<meta name="author" content="Orion R Vale" />
-<meta property="og:title" content="The Bloodline Watchers" />
-<meta property="og:description" content="A cosmic thriller rooted in ancient truth. Enter the glyphs." />
-<meta property="og:image" content="/assets/preview.jpg" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://thebloodlinewatchers.com" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="The Bloodline Watchers" />
-<meta name="twitter:description" content="A cosmic thriller rooted in ancient truth. Enter the glyphs." />
-<meta name="twitter:image" content="/assets/preview.jpg" />
+  <!-- META -->
+  <meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale. Published by CosmicQuill.pub." />
+  <meta name="keywords" content="Bloodline Watchers, Orion R Vale, awakening novel, glyphs, prophecy, chosen bloodline, Cosmic Quill" />
+  <meta name="author" content="Orion R. Vale / CosmicQuill.pub" />
+  <meta name="reply-to" content="orion@CosmicQuill.pub" />
+  <meta property="og:title" content="The Bloodline Watchers" />
+  <meta property="og:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
+  <meta property="og:image" content="/assets/preview.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.thebloodlinewatchers.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Bloodline Watchers" />
+  <meta name="twitter:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
+  <meta name="twitter:image" content="/assets/preview.jpg" />
+  <meta name="twitter:url" content="https://www.thebloodlinewatchers.com/" />
+  <link rel="canonical" href="https://www.thebloodlinewatchers.com/" />
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
 
-<style>
-:root {
-  --bg: #0b0b0d;
-  --ink: #fff;
-  --gold: #d4af37;
-}
+  <style>
+    :root {
+      --bg:#0b0b0d;
+      --ink:#e9e9ef;
+      --gold1:#ffd680;
+      --gold2:#ffb84a;
+      --gold3:#8a4b00;
+    }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  text-align: center;
-  font-family: 'Cinzel', serif;
-}
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      text-align: center;
+    }
 
-.hero {
-  padding: 40px 20px;
-}
+    .hero {
+      padding: 40px 20px;
+    }
 
-/* Title - letter by letter glow */
-.main-title {
-  font-size: clamp(2.2rem, 6vw, 3.5rem);
-  letter-spacing: 0.05em;
-  font-weight: 700;
-  margin: 0 0 16px;
-}
-.main-title span {
-  display: inline-block;
-  color: var(--ink);
-  text-shadow: 0 0 4px rgba(212,175,55,0.4), 0 0 12px rgba(212,175,55,0.3);
-  animation: shimmer 8s infinite;
-}
-.main-title span:nth-child(odd) { animation-delay: 2s; }
-.main-title span:nth-child(even) { animation-delay: 4s; }
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: .06em;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      margin: 0 0 12px 0;
+      line-height: 1.1;
+    }
 
-@keyframes shimmer {
-  0%, 100% { text-shadow: 0 0 4px rgba(212,175,55,0.3), 0 0 12px rgba(212,175,55,0.2); color: var(--ink);}
-  50% { text-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(212,175,55,0.5); color: var(--gold);}
-}
+    .main-title span {
+      display: inline-block;
+      position: relative;
+      animation: glowPulse 6s ease-in-out infinite;
+      color: var(--ink);
+    }
 
-/* Tagline */
-.tagline {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  opacity: 0.85;
-}
+    .main-title span:nth-child(odd) {
+      animation-delay: 0.3s;
+    }
 
-/* Phrase rotator */
-#phrase-rotator {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 6px var(--gold1), 0 0 12px var(--gold2); }
+      50% { text-shadow: 0 0 12px var(--gold1), 0 0 20px var(--gold2), 0 0 30px var(--gold3); }
+    }
 
-/* Runes */
-.runes-container {
-  font-family: 'Noto Sans Runic', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-.rune {
-  display: inline-block;
-  opacity: 0;
-  transform: rotateY(90deg);
-  animation: flipIn 0.8s forwards;
-}
-@keyframes flipIn {
-  to { opacity: 1; transform: rotateY(0deg); }
-}
+    .tagline {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
 
-/* Release teaser */
-.release-teaser .teaser-text {
-  font-size: clamp(1.6rem, 4.2vw, 2.6rem);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: teaserCycle 7s ease-in-out infinite;
-}
-@keyframes teaserCycle {
-  0% { opacity: 0; transform: translateY(6px); }
-  15% { opacity: 1; transform: translateY(0); }
-  85% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(6px); }
-}
+    .countdown {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
 
-/* Footer */
-footer {
-  color: #aaa;
-  padding: 20px;
-  font-size: 0.9rem;
-}
-.mystic-footer { opacity: 0.7; margin-top: 6px; }
-</style>
+    .runes-container {
+      font-family: 'Noto Sans Runic', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .rune {
+      margin: 0 4px;
+      display: inline-block;
+      animation: runeFlip 3s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .rune:nth-child(1) { animation-delay: 0s; }
+    .rune:nth-child(2) { animation-delay: 0.2s; }
+    .rune:nth-child(3) { animation-delay: 0.4s; }
+    .rune:nth-child(4) { animation-delay: 0.6s; }
+    .rune:nth-child(5) { animation-delay: 0.8s; }
+    .rune:nth-child(6) { animation-delay: 1s; }
+
+    @keyframes runeFlip {
+      0%, 100% { transform: rotateY(0deg); }
+      50% { transform: rotateY(180deg); }
+    }
+
+    .release-teaser {
+      display: grid;
+      place-items: center;
+      margin-top: 28px;
+      padding: 24px 16px;
+    }
+
+    .release-teaser .teaser-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4.2vw, 2.6rem);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0;
+      animation: teaserCycle 7s ease-in-out infinite;
+    }
+
+    @keyframes teaserCycle {
+      0%   { opacity: 0; transform: translateY(6px); }
+      12%  { opacity: .9; }
+      20%  { opacity: 1; }
+      78%  { opacity: .6; }
+      100% { opacity: 0; transform: translateY(6px); }
+    }
+
+    footer {
+      background: #0a0a0b;
+      color: #cfcfd6;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    .mystic-footer { opacity: 0.7; margin-top: 6px; }
+  </style>
 </head>
 
 <body>
-<div class="hero">
-  <h1 class="main-title" id="title"></h1>
-  <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
+  <div class="hero">
+    <h1 class="main-title">
+      <span>T</span><span>h</span><span>e</span>
+      <span> </span>
+      <span>B</span><span>l</span><span>o</span><span>o</span><span>d</span><span>l</span><span>i</span><span>n</span><span>e</span>
+      <span> </span>
+      <span>W</span><span>a</span><span>t</span><span>c</span><span>h</span><span>e</span><span>r</span><span>s</span>
+    </h1>
 
-  <div id="phrase-rotator">Enter the glyphs.</div>
+    <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
 
-  <div class="runes-container" id="runes"></div>
+    <div class="countdown" id="phrase-rotator">Enter the glyphs.</div>
 
-  <div class="release-teaser">
-    <div class="teaser-text">Coming Winter 2025</div>
+    <div class="runes-container" id="runes">
+      <span class="rune">ᛏ</span>
+      <span class="rune">ᚺ</span>
+      <span class="rune">ᛖ</span>
+      <span class="rune">ᛋ</span>
+      <span class="rune">ᛁ</span>
+      <span class="rune">ᚷ</span>
+    </div>
+
+    <div class="release-teaser" aria-live="polite">
+      <div class="teaser-text">Coming Winter 2025</div>
+    </div>
   </div>
-</div>
 
-<footer>
-  <p>© 2025 CosmicQuill.pub™. All rights reserved.</p>
-  <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
-</footer>
+  <footer>
+    <p>© 2025 CosmicQuill.pub™. All rights reserved.</p>
+    <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
+    <p>Contact: <a href="mailto:orion@CosmicQuill.pub">orion@CosmicQuill.pub</a></p>
+  </footer>
 
-<script>
-// Title split into spans
-const titleText = "The Bloodline Watchers";
-const titleEl = document.getElementById("title");
-titleText.split("").forEach(letter => {
-  const span = document.createElement("span");
-  span.textContent = letter;
-  titleEl.appendChild(span);
-});
+  <script>
+    const phrases = [
+      { eng: "Enter the glyphs.", runes: "ᛖᚾᛏᛖᚱ ᛏᚺᛖ ᚷᛚᚢᛈᛋ" },
+      { eng: "The signal will burn again", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᚹᛁᛚᛚ ᛒᚢᚱᚾ ᚨᚷᚨᛁᚾ" },
+      { eng: "The blood remembers", runes: "ᚦᛖ ᛒᛚᛟᛟᛞ ᚱᛖᛗᛖᛗᛒᛖᚱᛋ" }
+    ];
 
-// Phrase rotator
-const phrases = [
-  { en: "The Blood", runes: "ᚦᛖ ᛒᛚᛟᛞ" },
-  { en: "Enter the glyphs", runes: "ᛖᚾᛏᛖᚱ ᚦᛖ ᚷᛚᛁᚦᛋ" },
-  { en: "The signal will burn again", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᚹᛁᛚᛚ ᛒᚢᚱᚾ ᚨᚷᚨᛁᚾ" }
-];
-const phraseEl = document.getElementById("phrase-rotator");
-const runesEl = document.getElementById("runes");
+    let idx = 0;
+    const phraseEl = document.getElementById('phrase-rotator');
+    const runesEl = document.getElementById('runes');
 
-let index = 0;
-function cyclePhrases() {
-  const { en, runes } = phrases[index];
-  phraseEl.style.opacity = 0;
-  setTimeout(() => {
-    phraseEl.textContent = en.toUpperCase();
-    phraseEl.style.opacity = 1;
+    function rotatePhrase() {
+      const { eng, runes } = phrases[idx];
+      phraseEl.textContent = eng;
 
-    // Runes animation
-    runesEl.innerHTML = "";
-    runes.split("").forEach((r, i) => {
-      const span = document.createElement("span");
-      span.className = "rune";
-      span.textContent = r;
-      span.style.animationDelay = `${i * 0.15}s`;
-      runesEl.appendChild(span);
-    });
-  }, 1000);
+      const runeChars = runes.split("");
+      runesEl.innerHTML = "";
+      runeChars.forEach((char, i) => {
+        const span = document.createElement('span');
+        span.className = 'rune';
+        span.textContent = char;
+        span.style.animationDelay = `${i * 0.2}s`;
+        runesEl.appendChild(span);
+      });
 
-  index = (index + 1) % phrases.length;
-}
-cyclePhrases();
-setInterval(cyclePhrases, 5000);
-</script>
+      idx = (idx + 1) % phrases.length;
+    }
+
+    rotatePhrase();
+    setInterval(rotatePhrase, 6000);
+  </script>
 </body>
 </html>
