@@ -6,22 +6,156 @@
   <title>The Bloodline Watchers</title>
 
   <!-- META -->
-  <meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale." />
-  <meta name="keywords" content="Bloodline Watchers, Orion R Vale, awakening novel, glyphs, prophecy, chosen bloodline" />
-  <meta name="author" content="Orion R. Vale" />
+  <meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale. Published by CosmicQuill.pub." />
+  <meta name="keywords" content="Bloodline Watchers, Orion R Vale, awakening novel, glyphs, prophecy, chosen bloodline, Cosmic Quill" />
+  <meta name="author" content="Orion R. Vale / CosmicQuill.pub" />
   <meta property="og:title" content="The Bloodline Watchers" />
-  <meta property="og:description" content="A mythic novel by Orion R. Vale. Enter the glyphs." />
+  <meta property="og:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
   <meta property="og:image" content="/assets/preview.jpg" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.cosmicquill.pub/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Bloodline Watchers" />
+  <meta name="twitter:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
+  <meta name="twitter:image" content="/assets/preview.jpg" />
+  <meta name="twitter:url" content="https://www.cosmicquill.pub/" />
+  <link rel="canonical" href="https://www.cosmicquill.pub/" />
 
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --ink:#e9e9ef;
+      --gold1:#ffd680;
+      --gold2:#ffb84a;
+      --gold3:#8a4b00;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      text-align: center;
+    }
+    .hero {
+      padding: 40px 20px;
+    }
+
+    /* Ancient-styled title with animated ghostly gold backlight */
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: .06em;
+      font-size: clamp(2.2rem, 5.8vw, 3.4rem);
+      margin: 0 0 12px 0;
+      line-height: 1.1;
+      position: relative;
+      display: inline-block;
+      padding: 10px 16px;
+      overflow: hidden;
+    }
+    .main-title span {
+      position: relative;
+      z-index: 1;
+      color: var(--ink);
+      text-shadow:
+        0 0 2px rgba(255,214,128,.25),
+        0 0 6px rgba(255,184,74,.18),
+        0 0 12px rgba(255,184,74,.28);
+    }
+    .main-title::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 300%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,214,128,.15) 20%,
+        rgba(255,184,74,.25) 40%,
+        rgba(255,184,74,.15) 60%,
+        transparent 80%
+      );
+      animation: sweepLight 6s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes sweepLight {
+      0%, 30%   { left: -100%; }
+      50%       { left: 0%; }
+      70%, 100% { left: 100%; }
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+    .countdown {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .runes-container {
+      font-family: 'Noto Sans Runic', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .rune { margin: 0 4px; }
+
+    /* Release teaser: fade in, glow pulse, fade out, loop */
+    .release-teaser {
+      display: grid;
+      place-items: center;
+      margin-top: 28px;
+      padding: 24px 16px;
+    }
+    .release-teaser .teaser-text {
+      font-size: clamp(1.6rem, 4.2vw, 2.6rem);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0;
+      animation: teaserCycle 7s ease-in-out infinite;
+      text-shadow: 0 0 0 rgba(255, 214, 128, 0);
+      will-change: opacity, text-shadow, transform, filter;
+    }
+    @keyframes teaserCycle {
+      0%   { opacity: 0; text-shadow: 0 0 0 rgba(255,214,128,0); filter: none; transform: translateY(6px); }
+      12%  { opacity: .9; text-shadow: 0 0 18px rgba(255,214,128,.35); filter: drop-shadow(0 0 8px rgba(255,214,128,.18)); transform: translateY(0); }
+      20%  { opacity: 1; text-shadow: 0 0 22px rgba(255,214,128,.45); filter: drop-shadow(0 0 12px rgba(255,214,128,.22)); }
+      35%  { text-shadow: 0 0 10px rgba(255,214,128,.28); filter: drop-shadow(0 0 6px rgba(255,214,128,.18)); }
+      50%  { text-shadow: 0 0 26px rgba(255,214,128,.55); filter: drop-shadow(0 0 16px rgba(255,214,128,.28)); }
+      65%  { text-shadow: 0 0 12px rgba(255,214,128,.3);  filter: drop-shadow(0 0 7px rgba(255,214,128,.18)); }
+      78%  { opacity: .6; text-shadow: 0 0 8px rgba(255,214,128,.18); }
+      100% { opacity: 0; text-shadow: 0 0 0 rgba(255,214,128,0); filter: none; transform: translateY(6px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-title::before { animation: none; }
+      .release-teaser .teaser-text {
+        animation: none;
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255,214,128,.25);
+      }
+    }
+
+    footer {
+      background: #0a0a0b;
+      color: #cfcfd6;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    .mystic-footer { opacity: 0.7; margin-top: 6px; }
+  </style>
 </head>
 
 <body>
   <div class="hero">
-    <h1 class="main-title">The Bloodline Watchers</h1>
+    <h1 class="main-title"><span>The Bloodline Watchers</span></h1>
     <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
 
     <!-- Phrase Rotator -->
@@ -37,17 +171,14 @@
       <span class="rune">ᛃ</span>
     </div>
 
-    <!-- LOCK TIMER -->
-    <div class="lock-container">
-      <div class="lock-icon">
-        <div id="lock-timer">VIII•XXII</div>
-      </div>
-      <div class="lock-caption">Unlocking Chapter I – 8.22</div>
+    <!-- RELEASE TEASER -->
+    <div class="release-teaser" aria-live="polite">
+      <div class="teaser-text">Coming Winter 2025</div>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 Orion R. Vale. All rights reserved.</p>
+    <p>© 2025 CosmicQuill.pub™. All rights reserved.</p>
     <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
   </footer>
 
