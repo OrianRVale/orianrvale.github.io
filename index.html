@@ -5,31 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Bloodline Watchers</title>
 
-<!-- META -->
-<meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale. Published by CosmicQuill.pub." />
-<meta name="keywords" content="Bloodline Watchers, Orion R Vale, awakening novel, glyphs, prophecy, chosen bloodline, Cosmic Quill" />
-<meta name="author" content="Orion R. Vale / CosmicQuill.pub" />
+<!-- SEO -->
+<meta name="description" content="A cosmic thriller rooted in ancient truth. Enter the glyphs. The Bloodline Watchers by Orion R Vale. Published by CosmicQuill.pub." />
+<meta name="keywords" content="The Bloodline Watchers, Orion R Vale, Cosmic Quill, mythic thriller, runes, glyphs, prophecy" />
+<meta name="author" content="Orion R Vale" />
 <meta property="og:title" content="The Bloodline Watchers" />
-<meta property="og:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
+<meta property="og:description" content="A cosmic thriller rooted in ancient truth. Enter the glyphs." />
 <meta property="og:image" content="/assets/preview.jpg" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.cosmicquill.pub/" />
+<meta property="og:url" content="https://thebloodlinewatchers.com" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="The Bloodline Watchers" />
-<meta name="twitter:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
+<meta name="twitter:description" content="A cosmic thriller rooted in ancient truth. Enter the glyphs." />
 <meta name="twitter:image" content="/assets/preview.jpg" />
-<meta name="twitter:url" content="https://www.cosmicquill.pub/" />
-<link rel="canonical" href="https://www.cosmicquill.pub/" />
 
-<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
 
 <style>
 :root {
   --bg: #0b0b0d;
-  --ink: #e9e9ef;
-  --gold1: #ffd680;
-  --gold2: #ffb84a;
+  --ink: #fff;
+  --gold: #d4af37;
 }
 
 body {
@@ -37,90 +34,83 @@ body {
   background: var(--bg);
   color: var(--ink);
   text-align: center;
-  font-family: system-ui, sans-serif;
-}
-
-.hero { padding: 40px 20px; }
-
-/* Floating glowing title */
-.main-title {
   font-family: 'Cinzel', serif;
+}
+
+.hero {
+  padding: 40px 20px;
+}
+
+/* Title - letter by letter glow */
+.main-title {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  letter-spacing: 0.05em;
   font-weight: 700;
-  letter-spacing: .06em;
-  font-size: clamp(2.2rem, 5.8vw, 3.4rem);
-  margin: 0 0 12px 0;
-  position: relative;
+  margin: 0 0 16px;
+}
+.main-title span {
   display: inline-block;
-  text-shadow:
-    0 0 6px rgba(255,214,128,.35),
-    0 0 12px rgba(255,184,74,.28);
+  color: var(--ink);
+  text-shadow: 0 0 4px rgba(212,175,55,0.4), 0 0 12px rgba(212,175,55,0.3);
+  animation: shimmer 8s infinite;
 }
-.main-title::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 300%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255,214,128,.15) 20%,
-    rgba(255,184,74,.25) 40%,
-    rgba(255,184,74,.15) 60%,
-    transparent 80%
-  );
-  animation: sweepLight 6s ease-in-out infinite;
-}
-@keyframes sweepLight {
-  0%, 30% { left: -100%; }
-  50% { left: 0%; }
-  70%, 100% { left: 100%; }
+.main-title span:nth-child(odd) { animation-delay: 2s; }
+.main-title span:nth-child(even) { animation-delay: 4s; }
+
+@keyframes shimmer {
+  0%, 100% { text-shadow: 0 0 4px rgba(212,175,55,0.3), 0 0 12px rgba(212,175,55,0.2); color: var(--ink);}
+  50% { text-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(212,175,55,0.5); color: var(--gold);}
 }
 
-.tagline { font-size: 1.1rem; margin-bottom: 20px; opacity: 0.85; }
+/* Tagline */
+.tagline {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
 
-/* English phrase fade */
+/* Phrase rotator */
 #phrase-rotator {
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin-bottom: 20px;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
-/* Runes individual flip */
+/* Runes */
 .runes-container {
   font-family: 'Noto Sans Runic', sans-serif;
   font-size: 2rem;
-  display: inline-block;
+  margin-bottom: 20px;
 }
 .rune {
   display: inline-block;
-  margin: 0 4px;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
+  opacity: 0;
+  transform: rotateY(90deg);
+  animation: flipIn 0.8s forwards;
 }
-.rune.flip { transform: rotateY(180deg); }
+@keyframes flipIn {
+  to { opacity: 1; transform: rotateY(0deg); }
+}
 
-/* Coming Winter 2025 fade in/out */
-.release-teaser {
-  margin-top: 28px;
-}
+/* Release teaser */
 .release-teaser .teaser-text {
-  font-family: 'Cinzel', serif;
   font-size: clamp(1.6rem, 4.2vw, 2.6rem);
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0;
   animation: teaserCycle 7s ease-in-out infinite;
 }
 @keyframes teaserCycle {
-  0%,100% { opacity: 0; }
-  15%,85% { opacity: 1; }
+  0% { opacity: 0; transform: translateY(6px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(6px); }
 }
 
+/* Footer */
 footer {
-  background: #0a0a0b;
-  color: #cfcfd6;
+  color: #aaa;
   padding: 20px;
   font-size: 0.9rem;
 }
@@ -130,7 +120,7 @@ footer {
 
 <body>
 <div class="hero">
-  <h1 class="main-title"><span>The Bloodline Watchers</span></h1>
+  <h1 class="main-title" id="title"></h1>
   <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
 
   <div id="phrase-rotator">Enter the glyphs.</div>
@@ -148,44 +138,47 @@ footer {
 </footer>
 
 <script>
-// English → Rune mapping (Elder Futhark)
+// Title split into spans
+const titleText = "The Bloodline Watchers";
+const titleEl = document.getElementById("title");
+titleText.split("").forEach(letter => {
+  const span = document.createElement("span");
+  span.textContent = letter;
+  titleEl.appendChild(span);
+});
+
+// Phrase rotator
 const phrases = [
-  { en: "THE SIGNAL WILL BURN AGAIN", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᚹᛁᛚᛚ ᛒᚢᚱᚾ ᚨᚷᚨᛁᚾ" },
-  { en: "ENTER THE GLYPHS", runes: "ᛖᚾᛏᛖᚱ ᚦᛖ ᚷᛚᚢᛈᛋ" },
-  { en: "THE BLOOD", runes: "ᚦᛖ ᛒᛚᛟᛟᛞ" }
+  { en: "The Blood", runes: "ᚦᛖ ᛒᛚᛟᛞ" },
+  { en: "Enter the glyphs", runes: "ᛖᚾᛏᛖᚱ ᚦᛖ ᚷᛚᛁᚦᛋ" },
+  { en: "The signal will burn again", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᚹᛁᛚᛚ ᛒᚢᚱᚾ ᚨᚷᚨᛁᚾ" }
 ];
+const phraseEl = document.getElementById("phrase-rotator");
+const runesEl = document.getElementById("runes");
 
-const phraseEl = document.getElementById('phrase-rotator');
-const runesEl = document.getElementById('runes');
-
-let idx = 0;
-
-function showPhrase(i) {
-  const { en, runes } = phrases[i];
+let index = 0;
+function cyclePhrases() {
+  const { en, runes } = phrases[index];
   phraseEl.style.opacity = 0;
   setTimeout(() => {
-    phraseEl.textContent = en;
+    phraseEl.textContent = en.toUpperCase();
     phraseEl.style.opacity = 1;
 
-    // animate runes individually
-    runesEl.innerHTML = '';
-    runes.split('').forEach((char, j) => {
-      const span = document.createElement('span');
-      span.className = 'rune';
-      span.textContent = char;
+    // Runes animation
+    runesEl.innerHTML = "";
+    runes.split("").forEach((r, i) => {
+      const span = document.createElement("span");
+      span.className = "rune";
+      span.textContent = r;
+      span.style.animationDelay = `${i * 0.15}s`;
       runesEl.appendChild(span);
-      setTimeout(() => span.classList.add('flip'), j * 100);
-      setTimeout(() => span.classList.remove('flip'), j * 100 + 500);
     });
-
   }, 1000);
-}
 
-showPhrase(idx);
-setInterval(() => {
-  idx = (idx + 1) % phrases.length;
-  showPhrase(idx);
-}, 5000);
+  index = (index + 1) % phrases.length;
+}
+cyclePhrases();
+setInterval(cyclePhrases, 5000);
 </script>
 </body>
 </html>
