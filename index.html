@@ -2,37 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>The Bloodline Watchers</title>
-
-  <!-- META -->
-  <meta name="description" content="An ancient bloodline awakens. The countdown to the truth begins. A mythic novel by Orion R. Vale. Published by CosmicQuill.pub." />
-  <meta name="keywords" content="Bloodline Watchers, Orion R Vale, awakening novel, glyphs, prophecy, chosen bloodline, Cosmic Quill" />
-  <meta name="author" content="Orion R. Vale / CosmicQuill.pub" />
-  <meta name="reply-to" content="orion@CosmicQuill.pub" />
-  <meta property="og:title" content="The Bloodline Watchers" />
-  <meta property="og:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
-  <meta property="og:image" content="/assets/preview.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.thebloodlinewatchers.com/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Bloodline Watchers" />
-  <meta name="twitter:description" content="A mythic novel by Orion R. Vale. Enter the glyphs. Published by CosmicQuill.pub." />
-  <meta name="twitter:image" content="/assets/preview.jpg" />
-  <meta name="twitter:url" content="https://www.thebloodlinewatchers.com/" />
-  <link rel="canonical" href="https://www.thebloodlinewatchers.com/" />
-
-  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
+  <meta name="description" content="An ancient bloodline awakens. The signal burns. A mythic novel by Orion R. Veil. Available now." />
+  <meta name="author" content="Orion R. Veil / Cosmic Quill LLC" />
+  <meta name="theme-color" content="#050506">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg:#0b0b0d;
-      --ink:#e9e9ef;
-      --gold1:#ffd680;
-      --gold2:#ffb84a;
-      --gold3:#8a4b00;
+      --bg: #050506;
+      --ink: #e9e9ef;
+      --gold1: #ffd680;
+      --gold2: #ffb84a;
     }
 
     body {
@@ -41,175 +24,291 @@
       background: var(--bg);
       color: var(--ink);
       text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      overflow: hidden; 
+      position: relative;
     }
 
-    .hero {
-      padding: 40px 20px;
+    /* BACKGROUND CANVAS */
+    #void-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
     }
 
+    /* PARALLAX LAYER */
+    .parallax-layer {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      will-change: transform;
+    }
+
+    .hero-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* TITLE */
     .main-title {
       font-family: 'Cinzel', serif;
       font-weight: 700;
-      letter-spacing: .06em;
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      margin: 0 0 12px 0;
+      letter-spacing: .05em;
+      font-size: clamp(2rem, 8vw, 4.5rem);
+      margin: 0 0 10px 0;
       line-height: 1.1;
-    }
-
-    .main-title span {
-      display: inline-block;
+      text-transform: uppercase;
       position: relative;
-      animation: glowPulse 6s ease-in-out infinite;
-      color: var(--ink);
+      text-shadow: 0 0 20px rgba(0,0,0,0.8);
     }
 
-    .main-title span:nth-child(odd) {
-      animation-delay: 0.3s;
+    /* Glitch Animation */
+    .glitch-active {
+      animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+      color: var(--gold1);
     }
 
-    @keyframes glowPulse {
-      0%, 100% { text-shadow: 0 0 6px var(--gold1), 0 0 12px var(--gold2); }
-      50% { text-shadow: 0 0 12px var(--gold1), 0 0 20px var(--gold2), 0 0 30px var(--gold3); }
+    @keyframes glitch-anim {
+      0% { transform: translate(0) }
+      20% { transform: translate(-3px, 3px); text-shadow: 3px 0 #ff0000, -3px 0 #00ccff; }
+      40% { transform: translate(-3px, -3px); text-shadow: 3px 0 #ff0000, -3px 0 #00ccff; }
+      60% { transform: translate(3px, 3px); text-shadow: 3px 0 #ff0000, -3px 0 #00ccff; }
+      80% { transform: translate(3px, -3px); text-shadow: 3px 0 #ff0000, -3px 0 #00ccff; }
+      100% { transform: translate(0) }
     }
 
     .tagline {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      opacity: 0.85;
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      margin-bottom: 40px;
+      opacity: 0.8;
+      letter-spacing: 2px;
+      padding: 0 10px;
     }
 
-    .countdown {
-      font-size: 1rem;
+    /* DYNAMIC TEXT */
+    .dynamic-area {
+      min-height: 120px;
+      transition: opacity 0.5s ease;
+      opacity: 1;
       margin-bottom: 20px;
+    }
+    
+    .dynamic-area.fade-out { opacity: 0; transform: scale(0.95); }
+
+    .phrase-text {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 5vw, 1.4rem);
+      margin-bottom: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.2em;
+      color: var(--gold1);
+      text-shadow: 0 0 10px rgba(255, 184, 74, 0.4);
     }
 
     .runes-container {
       font-family: 'Noto Sans Runic', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      color: var(--ink);
+      height: 50px; 
     }
 
     .rune {
       margin: 0 4px;
       display: inline-block;
-      animation: runeFlip 3s ease-in-out infinite;
-      transform-origin: center;
+      transform-style: preserve-3d;
+      animation: runeFloat 6s ease-in-out infinite;
+    }
+    .rune.space { width: 10px; animation: none; }
+
+    @keyframes runeFloat {
+      0%, 100% { transform: translateY(0) rotateY(0deg); color: #888; }
+      50% { transform: translateY(-4px) rotateY(180deg); color: var(--gold2); text-shadow: 0 0 15px var(--gold1); }
     }
 
-    .rune:nth-child(1) { animation-delay: 0s; }
-    .rune:nth-child(2) { animation-delay: 0.2s; }
-    .rune:nth-child(3) { animation-delay: 0.4s; }
-    .rune:nth-child(4) { animation-delay: 0.6s; }
-    .rune:nth-child(5) { animation-delay: 0.8s; }
-    .rune:nth-child(6) { animation-delay: 1s; }
+    /* BUTTON */
+    .cta-container { margin-top: 25px; perspective: 1000px; }
 
-    @keyframes runeFlip {
-      0%, 100% { transform: rotateY(0deg); }
-      50% { transform: rotateY(180deg); }
-    }
-
-    .release-teaser {
-      display: grid;
-      place-items: center;
-      margin-top: 28px;
-      padding: 24px 16px;
-    }
-
-    .release-teaser .teaser-text {
+    .mystic-btn {
+      position: relative;
+      display: inline-block;
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 4.2vw, 2.6rem);
-      letter-spacing: .14em;
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0;
-      animation: teaserCycle 7s ease-in-out infinite;
+      color: var(--gold1);
+      border: 1px solid var(--gold2);
+      padding: 18px 40px;
+      background: rgba(10,10,12,0.9);
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(255, 184, 74, 0.1);
     }
 
-    @keyframes teaserCycle {
-      0%   { opacity: 0; transform: translateY(6px); }
-      12%  { opacity: .9; }
-      20%  { opacity: 1; }
-      78%  { opacity: .6; }
-      100% { opacity: 0; transform: translateY(6px); }
+    .mystic-btn:hover {
+      background: rgba(255, 184, 74, 0.15);
+      box-shadow: 0 0 30px rgba(255, 184, 74, 0.4);
+      color: #fff;
+      transform: scale(1.02);
     }
 
+    .release-subtext {
+      margin-top: 15px;
+      font-size: 0.75rem;
+      opacity: 0.6;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
     footer {
-      background: #0a0a0b;
-      color: #cfcfd6;
+      background: linear-gradient(to top, #000 0%, transparent 100%);
+      color: #555;
       padding: 20px;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
     }
-
-    .mystic-footer { opacity: 0.7; margin-top: 6px; }
+    
+    a.contact-link { color: #777; text-decoration: none; }
+    a.contact-link:hover { color: var(--gold1); }
   </style>
 </head>
 
 <body>
-  <div class="hero">
-    <h1 class="main-title">
-      <span>T</span><span>h</span><span>e</span>
-      <span> </span>
-      <span>B</span><span>l</span><span>o</span><span>o</span><span>d</span><span>l</span><span>i</span><span>n</span><span>e</span>
-      <span> </span>
-      <span>W</span><span>a</span><span>t</span><span>c</span><span>h</span><span>e</span><span>r</span><span>s</span>
-    </h1>
+  <canvas id="void-canvas"></canvas>
 
-    <div class="tagline">A cosmic thriller rooted in ancient truth.</div>
+  <div class="parallax-layer" id="scene">
+    <div class="hero-wrapper">
+      <h1 class="main-title" id="glitch-title">The Bloodline Watchers</h1>
+      <div class="tagline">The signal has returned.</div>
 
-    <div class="countdown" id="phrase-rotator">Enter the glyphs.</div>
+      <div class="dynamic-area" id="dynamic-container">
+        <div class="phrase-text" id="phrase-eng">Enter the glyphs</div>
+        <div class="runes-container" id="runes-target"></div>
+      </div>
 
-    <div class="runes-container" id="runes">
-      <span class="rune">ᛏ</span>
-      <span class="rune">ᚺ</span>
-      <span class="rune">ᛖ</span>
-      <span class="rune">ᛋ</span>
-      <span class="rune">ᛁ</span>
-      <span class="rune">ᚷ</span>
+      <div class="cta-container">
+        <a href="https://a.co/d/4p2XAzy" class="mystic-btn">Acquire the Artifact</a>
+        <div class="release-subtext">Available Now on Amazon</div>
+      </div>
     </div>
 
-    <div class="release-teaser" aria-live="polite">
-      <div class="teaser-text">Coming Early 2026</div>
-    </div>
+    <footer>
+      <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
+      <p>© 2025–2026 Cosmic Quill LLC. All rights reserved.</p>
+      <p>Contact: <a href="mailto:orion@CosmicQuill.pub" class="contact-link">orion@CosmicQuill.pub</a></p>
+    </footer>
   </div>
 
-  <footer>
-    <p>© 2025 CosmicQuill.pub™. All rights reserved.</p>
-    <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
-    <p>Contact: <a href="mailto:orion@CosmicQuill.pub">orion@CosmicQuill.pub</a></p>
-  </footer>
-
   <script>
+    // 1. CONFIG
     const phrases = [
-      { eng: "Enter the glyphs.", runes: "ᛖᚾᛏᛖᚱ ᛏᚺᛖ ᚷᛚᚢᛈᛋ" },
-      { eng: "The signal will burn again", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᚹᛁᛚᛚ ᛒᚢᚱᚾ ᚨᚷᚨᛁᚾ" },
-      { eng: "The blood remembers", runes: "ᚦᛖ ᛒᛚᛟᛟᛞ ᚱᛖᛗᛖᛗᛒᛖᚱᛋ" }
+      { eng: "Enter the glyphs", runes: "ᛖᚾᛏᛖᚱ ᛏᚺᛖ ᚷᛚᚢᛈᛋ" },
+      { eng: "The signal burns", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᛒᚢᚱᚾᛋ" },
+      { eng: "Blood remembers", runes: "ᛒᛚᛟᛟᛞ ᚱᛖᛗᛖᛗᛒᛖᚱᛋ" },
+      { eng: "Do not look away", runes: "ᛞᛟ ᚾᛟᛏ ᛚᛟᛟᚲ ᚨᚹᚨᚢ" }
     ];
 
-    let idx = 0;
-    const phraseEl = document.getElementById('phrase-rotator');
-    const runesEl = document.getElementById('runes');
+    // 2. CANVAS
+    const canvas = document.getElementById('void-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
 
-    function rotatePhrase() {
-      const { eng, runes } = phrases[idx];
-      phraseEl.textContent = eng;
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-      const runeChars = runes.split("");
-      runesEl.innerHTML = "";
-      runeChars.forEach((char, i) => {
-        const span = document.createElement('span');
-        span.className = 'rune';
-        span.textContent = char;
-        span.style.animationDelay = `${i * 0.2}s`;
-        runesEl.appendChild(span);
-      });
-
-      idx = (idx + 1) % phrases.length;
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5;
+        this.life = Math.random() * 100;
+        this.color = Math.random() > 0.9 ? '255, 214, 128' : '100, 100, 110';
+      }
+      update() {
+        this.x += this.speedX; this.y += this.speedY; this.life--;
+        if (this.life < 0 || this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+        ctx.fill();
+      }
     }
 
-    rotatePhrase();
-    setInterval(rotatePhrase, 6000);
+    for (let i = 0; i < 70; i++) particles.push(new Particle());
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 3. PARALLAX
+    document.addEventListener('mousemove', (e) => {
+      if(window.innerWidth > 768) {
+        const x = (window.innerWidth - e.pageX * 2) / 90;
+        const y = (window.innerHeight - e.pageY * 2) / 90;
+        document.getElementById('scene').style.transform = `translate(${x}px, ${y}px)`;
+      }
+    });
+
+    // 4. TEXT CYCLE
+    let idx = 0;
+    const container = document.getElementById('dynamic-container');
+    const engEl = document.getElementById('phrase-eng');
+    const runeEl = document.getElementById('runes-target');
+    const titleEl = document.getElementById('glitch-title');
+
+    function renderRunes(str) {
+      runeEl.innerHTML = "";
+      str.split("").forEach((c, i) => {
+        const s = document.createElement('span');
+        if (c === " ") { s.className = 'rune space'; s.innerHTML = "&nbsp;"; }
+        else { s.className = 'rune'; s.textContent = c; s.style.animationDelay = `${i*0.1}s`; }
+        runeEl.appendChild(s);
+      });
+    }
+
+    function triggerGlitch() {
+      titleEl.classList.add('glitch-active');
+      setTimeout(() => titleEl.classList.remove('glitch-active'), 300);
+    }
+
+    function cycle() {
+      container.classList.add('fade-out');
+      setTimeout(() => {
+        idx = (idx + 1) % phrases.length;
+        engEl.textContent = phrases[idx].eng;
+        renderRunes(phrases[idx].runes);
+        container.classList.remove('fade-out');
+        triggerGlitch();
+      }, 500);
+    }
+
+    renderRunes(phrases[0].runes);
+    setInterval(cycle, 5000);
   </script>
 </body>
 </html>
