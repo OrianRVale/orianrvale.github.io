@@ -3,10 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>The Bloodline Watchers</title>
-  <meta name="description" content="An ancient bloodline awakens. The signal burns. A mythic novel by Orion R. Veil. Available now." />
+  <title>The Bloodline Watchers | Official Interactive Experience</title>
+  
+  <meta name="description" content="The official interactive hub for 'The Bloodline Watchers: The Awakening.' A cosmic thriller by Orion R. Veil. Enter the glyphs and witness the awakening." />
+  <meta name="keywords" content="The Bloodline Watchers, Orion R. Veil, Cosmic Quill LLC, interactive fiction, mystery glyphs, cosmic horror book, supernatural thriller" />
   <meta name="author" content="Orion R. Veil / Cosmic Quill LLC" />
   <meta name="theme-color" content="#050506">
+  <link rel="canonical" href="https://www.thebloodlinewatchers.com/" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "The Bloodline Watchers Interactive Hub",
+    "author": {
+      "@type": "Person",
+      "name": "Orion R. Veil"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cosmic Quill LLC"
+    },
+    "mainEntity": {
+      "@type": "Book",
+      "name": "The Bloodline Watchers: The Awakening",
+      "url": "https://books2read.com/thebloodlinewatchers/"
+    }
+  }
+  </script>
   
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+Runic&display=swap" rel="stylesheet" />
 
@@ -32,7 +56,6 @@
       position: relative;
     }
 
-    /* BACKGROUND CANVAS */
     #void-canvas {
       position: absolute;
       top: 0; left: 0;
@@ -40,7 +63,6 @@
       z-index: -1;
     }
 
-    /* PARALLAX LAYER */
     .parallax-layer {
       position: relative;
       z-index: 2;
@@ -62,7 +84,6 @@
       box-sizing: border-box;
     }
 
-    /* TITLE - PULSE EFFECT */
     .main-title {
       font-family: 'Cinzel', serif;
       font-weight: 700;
@@ -72,24 +93,14 @@
       line-height: 1.1;
       text-transform: uppercase;
       position: relative;
-      /* The Pulse Animation */
       animation: cosmicPulse 4s ease-in-out infinite alternate;
     }
 
     @keyframes cosmicPulse {
-      0% { 
-        text-shadow: 0 0 10px rgba(0,0,0,0.8); 
-        opacity: 0.9; 
-        transform: scale(1);
-      }
-      100% { 
-        text-shadow: 0 0 25px var(--gold1), 0 0 40px rgba(255, 184, 74, 0.3); 
-        opacity: 1; 
-        transform: scale(1.02); /* Very subtle growth */
-      }
+      0% { text-shadow: 0 0 10px rgba(0,0,0,0.8); opacity: 0.9; transform: scale(1); }
+      100% { text-shadow: 0 0 25px var(--gold1), 0 0 40px rgba(255, 184, 74, 0.3); opacity: 1; transform: scale(1.02); }
     }
 
-    /* GLITCH (Color Only - No Bouncing) */
     .glitch-active {
       animation: glitch-color 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
     }
@@ -108,7 +119,6 @@
       padding: 0 10px;
     }
 
-    /* DYNAMIC TEXT */
     .dynamic-area {
       min-height: 120px;
       transition: opacity 0.5s ease;
@@ -148,7 +158,6 @@
       50% { transform: translateY(-4px) rotateY(180deg); color: var(--gold2); text-shadow: 0 0 15px var(--gold1); }
     }
 
-    /* BUTTON */
     .cta-container { margin-top: 25px; perspective: 1000px; }
 
     .mystic-btn {
@@ -182,7 +191,6 @@
       text-transform: uppercase;
     }
 
-    /* FOOTER */
     footer {
       background: linear-gradient(to top, #000 0%, transparent 100%);
       color: #555;
@@ -209,20 +217,19 @@
       </div>
 
       <div class="cta-container">
-        <a href="https://a.co/d/4p2XAzy" class="mystic-btn">Acquire the Artifact</a>
-        <div class="release-subtext">Available Now on Amazon</div>
+        <a href="https://books2read.com/thebloodlinewatchers/" class="mystic-btn">Acquire the Artifact</a>
+        <div class="release-subtext">Secure the transmission at all retailers</div>
       </div>
     </div>
 
     <footer>
       <p class="mystic-footer">If you made it here and return… then you are awakening.</p>
-      <p>© 2025–2026 Cosmic Quill LLC. All rights reserved.</p>
+      <p>© 2025–2026 Cosmic Quill LLC. All rights reserved. Author: Orion R. Veil</p>
       <p>Contact: <a href="mailto:orion@CosmicQuill.pub" class="contact-link">orion@CosmicQuill.pub</a></p>
     </footer>
   </div>
 
   <script>
-    // 1. CONFIG
     const phrases = [
       { eng: "Enter the glyphs", runes: "ᛖᚾᛏᛖᚱ ᛏᚺᛖ ᚷᛚᚢᛈᛋ" },
       { eng: "The signal burns", runes: "ᚦᛖ ᛋᛁᚷᚾᚨᛚ ᛒᚢᚱᚾᛋ" },
@@ -230,7 +237,6 @@
       { eng: "Do not look away", runes: "ᛞᛟ ᚾᛟᛏ ᛚᛟᛟᚲ ᚨᚹᚨᚢ" }
     ];
 
-    // 2. CANVAS
     const canvas = document.getElementById('void-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -275,7 +281,6 @@
     }
     animate();
 
-    // 3. PARALLAX
     document.addEventListener('mousemove', (e) => {
       if(window.innerWidth > 768) {
         const x = (window.innerWidth - e.pageX * 2) / 90;
@@ -284,7 +289,6 @@
       }
     });
 
-    // 4. TEXT CYCLE
     let idx = 0;
     const container = document.getElementById('dynamic-container');
     const engEl = document.getElementById('phrase-eng');
